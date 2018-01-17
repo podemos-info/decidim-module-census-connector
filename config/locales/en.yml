@@ -1,0 +1,30 @@
+en:
+  census:
+    api:
+      person:
+        document_types:
+          dni: DNI
+          nie: NIE
+          passport: Passport
+        genders:
+          female: Female
+          male: Male
+          undisclosed: Undisclosed
+          other: Other
+  decidim:
+    authorization_handlers:
+      census:
+        name: Census
+    census_connector:
+      verifications:
+        census:
+          authorizations:
+            data:
+              title: Personal data
+            verification:
+              title: Identity verification
+            membership_level:
+              title: Membership level
+          errors:
+            age_under_minimum_age: You should be older than %{minimum_age} years old to register
+            create: Error when saving

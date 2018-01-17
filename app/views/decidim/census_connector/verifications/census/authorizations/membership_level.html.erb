@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="row collapse">
+    <div class="row collapse">
+      <div class="columns large-8 large-centered text-center page-title">
+        <h1><%= t(".title") %></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns large-6 medium-centered">
+        <div class="card">
+          <div class="card__content">
+            <%= decidim_form_for(@handler, url: decidim_census.authorization_path(step: current_step)) do |form| %>
+              <div class="field">
+                <%= form.label :membership_level %>
+                <ul>
+                <% @handler.class.membership_levels.each do |membership_level, value| %>
+                  <li><%= form.radio_button :membership_level, value, label: membership_level %></li>
+                <% end %>
+                </ul>
+              </div>
+
+              <div class="actions">
+                <%= form.submit t("authorize", scope: "decidim.verifications.authorizations.new"), class: "button expanded" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

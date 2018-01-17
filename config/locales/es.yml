@@ -1,0 +1,66 @@
+es:
+  activemodel:
+    attributes:
+      data_handler:
+        address: Dirección
+        address_scope_id: Domicilio
+        born_at: Fecha de nacimiento
+        document_number: Número de documento
+        document_type: Tipo de documento
+        document_scope_id: País del documento
+        first_name: Nombre
+        gender: Género
+        last_name1: Primer apellido
+        last_name2: Segundo apellido
+        postal_code: Código postal
+        scope_id: Lugar de participación
+      membership_level_handler:
+        membership_level: Nivel de compromiso
+  census:
+    api:
+      person:
+        document_type:
+          dni: DNI
+          nie: NIE
+          passport: Pasaporte
+        gender:
+          female: Femenino
+          male: Masculino
+          undisclosed: No contesta
+          other: Otro
+        membership_level:
+          activist: Militante
+          follower: Simpatizante
+          member: Afiliado/a
+          person: Persona
+  decidim:
+    authorization_handlers:
+      census:
+        name: Censo
+    census_connector:
+      verifications:
+        census:
+          authorizations:
+            data:
+              title: Introduce tus datos personales
+            verification:
+              title: Verifica tu identidad
+              directions: "<ul><li>Pincha en las imágenes de ejemplo para subir fotos de tu documento, así podremos verificar tu identidad.</li>
+                <li>Puedes hacer las fotos directamente con tu teléfono móvil intentado ajustar los bordes del documento dentro de la pantalla. Si decides no hacerlo así ten en cuenta que sólo admitimos imágenes en formato <strong>.jpg</strong> o <strong>.png</strong>.</li>
+                <li>Si tienes cualquier problema, puedes ponerte en contacto con nosotros enviando un email a <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
+              choose: Elegir
+              sample1-description:
+                dni: "Anverso del DNI"
+                nie: "Anverso de la tarjeta de residencia. Comunitarios: Certificado de registro de ciudadano de la Unión"
+                passport: "Página principal del pasaporte"
+              sample2-description:
+                dni: "Reverso del DNI"
+                nie: "Reverso de la tarjeta de residencia. Comunitarios: pasaporte o carnet de identificación nacional"
+                passport: "Página adicional del pasaporte (opcional)"
+            membership_level:
+              title: Elige tu nivel de compromiso
+          errors:
+            create: Se ha producido un error al guardar tus datos personales.
+  errors:
+    messages:
+      age_under_minimum_age: Debes tener más de %{minimum_age} años para registrarte
