@@ -24,8 +24,10 @@ module Decidim
           attribute :document_type, String
           attribute :document_id, String
           attribute :document_scope_id, Integer
+
           attribute :born_at, Date
           attribute :gender, String
+
           attribute :address, String
           attribute :address_scope_id, Integer
           attribute :scope_id, Integer
@@ -72,7 +74,7 @@ module Decidim
           end
 
           def local_document?
-            document_type != "passport"
+            ::Census::API::Person.local_document? document_type
           end
 
           def self.safe_params(params)

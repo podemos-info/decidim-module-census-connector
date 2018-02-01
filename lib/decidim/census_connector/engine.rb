@@ -11,7 +11,7 @@ module Decidim
     class Engine < ::Rails::Engine
       isolate_namespace Decidim::CensusConnector
 
-      initializer "decidim_census_conector.inject_abilities_to_user" do |_app|
+      initializer "decidim_census_conector.inject_abilities_to_user" do
         Decidim.configure do |config|
           config.abilities += ["Decidim::CensusConnector::Verifications::Abilities::CurrentUserAbility"]
         end
@@ -19,6 +19,10 @@ module Decidim
 
       initializer "decidim_census_connector.assets" do |app|
         app.config.assets.precompile += %w(decidim_census_connector_manifest.js decidim_census_connector_manifest.css)
+      end
+
+      initializer "decidim_census_connector.mount_routes" do
+        Decidim.register_global_engine "decidim_census_account", Decidim::CensusConnector::Account::Engine, at: "census_account"
       end
     end
   end

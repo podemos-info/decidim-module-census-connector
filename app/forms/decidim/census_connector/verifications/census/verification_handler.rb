@@ -22,7 +22,7 @@ module Decidim
           end
 
           def document_type
-            @document_type ||= context.person_data[:document_type]
+            @document_type ||= context.person.document_type
           end
 
           def information_page

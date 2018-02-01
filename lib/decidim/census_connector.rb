@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require "decidim/census_connector/engine"
 require "decidim/census_connector/version"
+require "decidim/census_connector/engine"
+require "decidim/census_connector/account/engine"
 
 require "decidim/census_connector/verifications/census"
 

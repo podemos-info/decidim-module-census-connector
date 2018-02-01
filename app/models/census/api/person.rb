@@ -6,7 +6,7 @@ module Census
     class Person < CensusAPI
       DOCUMENT_TYPES = %w(dni nie passport).freeze
       GENDERS = %w(female male other undisclosed).freeze
-      MEMBERSHIP_LEVELS = %w(person follower member activist).freeze
+      MEMBERSHIP_LEVELS = %w(follower member activist).freeze
 
       def self.document_types
         @document_types ||= Hash[DOCUMENT_TYPES.map { |type| [I18n.t(type, scope: "census.api.person.document_type"), type] }].freeze
@@ -20,6 +20,10 @@ module Census
         @membership_levels ||= Hash[MEMBERSHIP_LEVELS.map do |membership_level|
           [I18n.t(membership_level, scope: "census.api.person.membership_level"), membership_level]
         end].freeze
+      end
+
+      def self.local_document?(document_type)
+        document_type != "passport"
       end
 
       # PUBLIC creates the person with the given params.

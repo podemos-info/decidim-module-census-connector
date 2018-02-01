@@ -1,0 +1,57 @@
+<% if has_person? %>
+<div class="card card--list">
+  <div class="card--list__item">
+    <div class="card--list__text">
+      <div>
+        <a class="card__link" href="/public/static-with-nav">
+          <h6 class="card--list__heading heading6">
+            Datos personales
+          </h6>
+          <span class="text-small"><%= person_presenter.full_name %></span><br/>
+          <span class="text-small"><%= person_presenter.full_document %></span><br/>
+          <span class="text-small"><%= person_presenter.born_info %></span>
+        </a>
+      </div>
+    </div>
+    <div class="card--list__data">
+      <a href="" class="card--list__data__icon"><%=icon("check", class: "checked")%></a>
+    </div>
+  </div>
+
+  <div class="card--list__item">
+    <div class="card--list__text">
+      <div>
+        <a class="card__link" href="/public/static-with-nav">
+          <h6 class="card--list__heading heading6">
+            Ubicación
+          </h6>
+          <span class="text-small"><%= person_presenter.full_address %></span><br/>
+          <span class="text-small"><%= person_presenter.participation_scope %></span>
+        </a>  
+      </div>
+    </div>
+    <div class="card--list__data">
+      <a href="<%= decidim_census.root_path(step: :data) %>" class="card--list__data__icon"><%=icon("pencil")%></a>
+    </div>
+  </div>
+
+  <div class="card--list__item">
+    <div class="card--list__text">
+      <div>
+        <a class="card__link" href="<%= decidim_census.root_path(step: :membership_level) %>">
+          <h6 class="card--list__heading heading6">
+            Nivel de compromiso
+          </h6>
+          <span class="text-small"><%= person_presenter.membership_level %></span>
+        </a>  
+      </div>
+    </div>
+    <div class="card--list__data">
+      <a href="<%= decidim_census.root_path(step: :membership_level) %>" class="card--list__data__icon"><%=icon("pencil")%></a>
+    </div>
+  </div>
+</div>
+<% else %>
+  <p>Aún no estás registrado en el censo de Podemos.<br/><a href="<%= decidim_census.root_path %>">Apúntate para participar en las votaciones.</a></p>
+<% end %>
+<%= stylesheet_link_tag "decidim/census_connector/account/account" %>

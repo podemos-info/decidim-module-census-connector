@@ -17,7 +17,7 @@ module Decidim
 
           def index
             if has_person?
-              @handler = current_handler.from_params(person_data).with_context(form_context)
+              @handler = current_handler.from_model(person).with_context(form_context)
             else
               @handler = current_handler.new.with_context(form_context)
               @handler.use_default_values
@@ -90,7 +90,7 @@ module Decidim
               user: current_user,
               person_id: person_id,
               local_scope: local_scope,
-              person_data: person_data
+              person: person
             }
           end
 

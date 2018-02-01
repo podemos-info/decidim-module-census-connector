@@ -37,7 +37,17 @@ es:
     authorization_handlers:
       census:
         name: Censo
+      admin:
+        census:
+          help:
+            - Personas inscritas en el censo de podemos
     census_connector:
+      account:
+        menu:
+          census: Censo
+        account:
+          index:
+            title: Inscripción en el censo
       verifications:
         census:
           authorizations:
