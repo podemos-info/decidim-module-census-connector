@@ -18,34 +18,4 @@ describe "Census person creation", type: :system do
   it "redirects to personal data page after login" do
     expect(page).to have_content("Personal data")
   end
-
-  it "allows the user to fulfill their personal data details" do
-    submit_upload_form(
-      doc_type: "DNI",
-      doc_number: "XXXXXXXX",
-      file_name: "id.jpg"
-    )
-
-    expect(page).to have_content("Document uploaded successfully")
-  end
-
-  it "shows an error when upload failed" do
-    submit_upload_form(
-      doc_type: "DNI",
-      doc_number: "XXXXXXXX",
-      file_name: "Exampledocument.pdf"
-    )
-
-    expect(page).to have_content("There was a problem uploading your document")
-  end
-
-  private
-
-  def submit_upload_form(doc_type:, doc_number:, file_name:)
-    select doc_type, from: "Type of your document"
-    fill_in "Document number (with letter)", with: doc_number
-    attach_file "Scanned copy of your document", Decidim::Dev.asset(file_name)
-
-    click_button "Request verification"
-  end
 end
