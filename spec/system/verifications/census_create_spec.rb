@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Census person creation", type: :feature do
+describe "Census person creation", type: :system do
   let!(:organization) do
     create(:organization, available_authorizations: ["census"])
   end
