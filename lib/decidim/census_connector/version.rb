@@ -3,7 +3,7 @@
 module Decidim
   module CensusConnector
     def self.version
-      "0.1.0"
+      "0.10.0.pre"
     end
   end
 end
