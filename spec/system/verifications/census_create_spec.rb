@@ -2,10 +2,14 @@
 
 require "spec_helper"
 
+require "decidim/core/test/factories"
+
 describe "Census person creation", type: :system do
   let!(:organization) do
     create(:organization, available_authorizations: ["census"])
   end
+
+  let!(:scope) { create(:scope, code: "ES") }
 
   let!(:user) { create(:user, :confirmed, organization: organization) }
 

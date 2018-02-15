@@ -2,11 +2,11 @@ en:
   census:
     api:
       person:
-        document_types:
+        document_type:
           dni: DNI
           nie: NIE
           passport: Passport
-        genders:
+        gender:
           female: Female
           male: Male
           undisclosed: Undisclosed
@@ -16,6 +16,9 @@ en:
       census:
         name: Census
     census_connector:
+      account:
+        menu:
+          census: Census
       verifications:
         census:
           authorizations:
