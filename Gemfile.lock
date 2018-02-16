@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim/decidim
-  revision: ced72e3aac3fe7d7405b801816eff3ad6b8b44ef
+  revision: 6647a17f473542f7c3320a8fd33e4986ecfe1c61
   branch: master
   specs:
     decidim (0.10.0.pre)
@@ -399,8 +399,8 @@ GEM
       activerecord (>= 4.2, < 5.2)
       request_store (~> 1.1)
     parallel (1.12.1)
-    parser (2.4.0.2)
-      ast (~> 2.3)
+    parser (2.5.0.0)
+      ast (~> 2.4.0)
     pg (0.21.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
