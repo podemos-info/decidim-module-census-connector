@@ -56,7 +56,7 @@ AllCops:
   # If a value is specified for TargetRubyVersion then it is used.
   # Else if .ruby-version exists and it contains an MRI version it is used.
   # Otherwise we fallback to the oldest officially supported Ruby version (2.0).
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.3
 
 # Indent private/protected/public as deep as method definitions
 Layout/AccessModifierIndentation:
@@ -438,7 +438,7 @@ Layout/ExtraSpacing:
 Naming/FileName:
   # File names listed in AllCops:Include are excluded by default. Add extra
   # excludes here.
-  Exclude: []
+  Exclude: ["lib/generators/decidim/census_connector/install/templates/config/initializers/decidim-census_connector.rb"]
   # When true, requires that each source file should define a class or module
   # with a name which matches the file name (converted to ... case).
   # It further expects it to be nested inside modules which match the names
@@ -526,9 +526,6 @@ Style/HashSyntax:
   UseHashRocketsWithSymbolValues: false
   # Do not suggest { a?: 1 } over { :a? => 1 } in ruby19 style
   PreferHashRocketsForNonAlnumEndingSymbols: false
-
-Style/IfUnlessModifier:
-  MaxLineLength: 80
 
 Layout/IndentationConsistency:
   # The difference between `rails` and `normal` is that the `rails` style
@@ -1037,9 +1034,6 @@ Naming/VariableNumber:
     - normalcase
     - non_integer
 
-Style/WhileUntilModifier:
-  MaxLineLength: 80
-
 # WordArray enforces how array literals of word-like strings should be expressed.
 Style/WordArray:
   EnforcedStyle: percent
@@ -1262,25 +1256,7 @@ Rails/HasManyOrHasOneDependent:
     - "**/*/app/models/**/*.rb"
 
 Metrics/BlockLength:
-  Exclude:
-    - 'decidim-admin/app/controllers/decidim/admin/concerns/has_attachments.rb'
-    - 'decidim-*/lib/**/*engine.rb'
-    - 'decidim-api/lib/decidim/api/schema.rb'
-    - 'decidim-core/config/initializers/devise.rb'
-    - 'decidim-core/lib/decidim/core/api/translated_field_type.rb'
-    - 'decidim-core/lib/decidim/resourceable.rb'
-    - 'decidim-comments/lib/decidim/comments/api/comment_type.rb'
-    - 'decidim-*/app/controllers/concerns/**/*'
-    - 'decidim-*/**/routes.rb'
-    - 'decidim-*/db/migrate/*.rb'
-    - 'decidim-*/**/*/types/**/*'
-    - 'decidim-*/lib/**/*/test/**/*'
-    - 'decidim-*/lib/**/*/feature.rb'
-    - 'decidim-*/lib/**/*/participatory_space.rb'
-    - '**/spec/**/*_spec.rb'
-    - '**/spec/**/*_examples.rb'
-    - '**/*.gemspec'
-    - '**/abilities/**/*_ability.rb'
+  Enabled: false
 
 RSpec/BeforeAfterAll:
   Enabled: true
@@ -1295,9 +1271,7 @@ RSpec/ContextWording:
 
 RSpec/DescribeClass:
   Exclude:
-    - spec/i18n_spec.rb
-    - spec/generator_spec.rb
-    - decidim-comments/spec/bundle_spec.rb
+    - "spec/system/**/*" # TODO: Fixed in rubocop-rspec 1.22.0, remove when bumping to it
 
 RSpec/ExampleLength:
   Max: 49

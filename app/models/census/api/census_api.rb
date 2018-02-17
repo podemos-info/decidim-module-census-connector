@@ -10,9 +10,7 @@ module Census
 
       base_uri ::Decidim::CensusConnector.census_api_base_uri
 
-      if Decidim::CensusConnector.census_api_proxy_address.present?
-        http_proxy Decidim::CensusConnector.census_api_proxy_address, Decidim::CensusConnector.census_api_proxy_port
-      end
+      http_proxy Decidim::CensusConnector.census_api_proxy_address, Decidim::CensusConnector.census_api_proxy_port if Decidim::CensusConnector.census_api_proxy_address.present?
 
       debug_output if Decidim::CensusConnector.census_api_debug
 
