@@ -1,4 +1,21 @@
 en:
+  activemodel:
+    attributes:
+      data_handler:
+        address: Address
+        address_scope_id: City
+        born_at: Birth date
+        document_number: Document number
+        document_type: Document Type
+        document_scope_id: Document country
+        first_name: Name
+        gender: Gender
+        last_name1: First surname
+        last_name2: Second surname
+        postal_code: Postal code
+        scope_id: Participation place
+      membership_level_handler:
+        membership_level: Engagement level
   census:
     api:
       person:
@@ -11,6 +28,11 @@ en:
           male: Male
           undisclosed: Undisclosed
           other: Other
+        membership_level:
+          activist: Activist
+          follower: Follower
+          member: Member
+          person: Person
   decidim:
     authorization_handlers:
       census:
@@ -26,6 +48,18 @@ en:
               title: Personal data
             verification:
               title: Identity verification
+              directions: "<ul><li>Click on the sample images to upload pictures of your document, so that we can verify your identity.</li>
+                <li>You can take pictures directly from your cell phone, making sure to fit the shape of the document into your screen. If you decide not to do it like that, notice that we only accept <strong>.jpg</strong> o <strong>.png</strong> formats.</li>
+                <li>If you have any trouble, you can get in touch with us by sending an email to <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
+              choose: Choose
+              sample1-description:
+                dni: "DNI anverse"
+                nie: "Anverse of your residence card. UE citizens: certificate of registration as EU citizen"
+                passport: "Main passport page"
+              sample2-description:
+                dni: "DNI reverse"
+                nie: "Reverso of your residence card. EU citizens: passport or national identity card"
+                passport: "Additional passport page (optional)"
             membership_level:
               title: Membership level
           errors:

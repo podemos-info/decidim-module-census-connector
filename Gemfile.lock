@@ -569,6 +569,7 @@ GEM
     valid_email2 (2.2.2)
       activemodel (>= 3.2)
       mail (~> 2.5)
+    vcr (4.0.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -608,6 +609,7 @@ DEPENDENCIES
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
   uglifier (~> 4.1)
+  vcr (~> 4.0)
   web-console (~> 3.5)
 
 RUBY VERSION

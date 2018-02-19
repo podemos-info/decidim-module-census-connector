@@ -31,7 +31,7 @@ module Census
         response = send_request do
           post("/api/v1/people", body: params)
         end
-        response[:person][:id]
+        response[:person_id]
       end
 
       # PUBLIC update the given person with the given params.
@@ -59,7 +59,7 @@ module Census
         end
 
         send_request do
-          post("/api/v1/people/#{person_id}/verifications", body: { files: files })
+          post("/api/v1/people/#{person_id}/document_verifications", body: { files: files })
         end
       end
 

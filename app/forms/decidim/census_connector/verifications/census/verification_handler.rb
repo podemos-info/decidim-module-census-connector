@@ -11,7 +11,7 @@ module Decidim
 
           validates :document_file1, presence: true
           validates :document_file2, presence: true, if: :require_document_file2?
-          validates :tos_agreement, allow_nil: false, acceptance: true
+          validates :tos_agreement, allow_nil: true, acceptance: true
 
           def self.safe_params(params)
             params.require(:verification_handler).permit(:document_file1, :document_file2, :tos_agreement)
