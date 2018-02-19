@@ -3,7 +3,9 @@
 require "decidim/dev/common_rake"
 
 desc "Generates a dummy app for testing"
-task test_app: "decidim:generate_external_test_app"
+task test_app: "decidim:generate_external_test_app" do
+  sh("bin/rails generate decidim:census_connector:install")
+end
 
 desc "Generates a development app."
 task development_app: "decidim:generate_external_development_app" do
