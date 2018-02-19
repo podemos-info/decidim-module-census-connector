@@ -20,10 +20,6 @@ module Census
         json_response[:http_response_code] = response.code.to_i
 
         json_response
-      rescue SocketError
-        { http_response_code: nil }
-      rescue StandardError => e
-        { http_response_code: e.response.code.to_i }
       end
     end
   end
