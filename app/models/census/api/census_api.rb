@@ -16,9 +16,12 @@ module Census
 
       def self.send_request
         response = yield
-        json_response = JSON.parse(response.body, symbolize_names: true)
-        json_response[:http_response_code] = response.code.to_i
 
+        http_response_code = response.code.to_i
+        return { http_response_code: http_response_code } if http_response_code == 500
+
+        json_response = JSON.parse(response.body, symbolize_names: true)
+        json_response[:http_response_code] = http_response_code
         json_response
       end
     end
