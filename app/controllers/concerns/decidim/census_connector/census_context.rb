@@ -69,10 +69,8 @@ module Decidim
 
         def person
           return nil unless has_person?
-          @person ||= begin
-            person_data = ::Census::API::Person.find(person_id)
-            Person.new(person_data)
-          end
+
+          @person ||= PersonProxy.new(person_id).person
         end
       end
     end
