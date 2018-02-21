@@ -56,7 +56,7 @@ module Decidim
               params: {
                 scope: "decidim.census_connector.verifications.census",
                 minimum_age: minimum_age,
-                allowed_documents: allowed_document_types.to_sentence(words_connector: " #{I18n.t("or")} ")
+                allowed_documents: allowed_document_types.to_sentence(words_connector: " #{I18n.t("or", scope: "decidim.census_connector.verifications.census")} ")
               }
             }
           end

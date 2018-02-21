@@ -77,4 +77,4 @@ es:
   errors:
     messages:
       age_under_minimum_age: Debes tener más de %{minimum_age} años para registrarte
-  or: o
+          or: o
