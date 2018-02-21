@@ -17,6 +17,8 @@ module Decidim
 
             authorize_document_types
 
+            return [@status_code, @data] if @status_code == :ok
+
             add_extra_explanation
 
             [@status_code, @data]
