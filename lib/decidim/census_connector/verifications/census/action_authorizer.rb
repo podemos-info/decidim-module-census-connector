@@ -9,32 +9,17 @@ module Decidim
             @allowed_document_types = options.delete("allowed_document_types")
             @minimum_age = options.delete("minimum_age")
 
-            status_code, data = *super
+            @status_code, @data = *super
 
-            return [status_code, data] if status_code == :missing
+            return [@status_code, @data] if @status_code == :missing
 
-            if minimum_age.present? && age < minimum_age
-              status_code = :unauthorized
-              add_unmatched_field(data, "age" => age)
-            end
+            authorize_age
 
-            if allowed_document_types.present? && document_type == "passport"
-              status_code = :unauthorized
-              add_unmatched_field(data, "document_type" => document_type_label)
-            end
+            authorize_document_types
 
-            if minimum_age.present? || allowed_document_types.present?
-              data[:extra_explanation] = {
-                key: "extra_explanation",
-                params: {
-                  scope: "decidim.census_connector.verifications.census",
-                  minimum_age: minimum_age,
-                  allowed_documents: allowed_document_types.to_sentence(words_connector: " #{I18n.t("or")} ")
-                }
-              }
-            end
+            add_extra_explanation
 
-            [status_code, data]
+            [@status_code, @data]
           end
 
           # Adds the list of allowed postal codes to the redirect URL, to allow forms to inform about it
@@ -47,10 +32,39 @@ module Decidim
 
           private
 
-          def add_unmatched_field(data, field)
-            data[:fields] ||= {}
+          def authorize_age
+            if minimum_age.present? && age < minimum_age
+              @status_code = :unauthorized
 
-            data[:fields].merge!(field)
+              add_unmatched_field("age" => age)
+            end
+          end
+
+          def authorize_document_types
+            if allowed_document_types.present? && document_type == "passport"
+              @status_code = :unauthorized
+
+              add_unmatched_field("document_type" => document_type_label)
+            end
+          end
+
+          def add_extra_explanation
+            return unless minimum_age.present? || allowed_document_types.present?
+
+            @data[:extra_explanation] = {
+              key: "extra_explanation",
+              params: {
+                scope: "decidim.census_connector.verifications.census",
+                minimum_age: minimum_age,
+                allowed_documents: allowed_document_types.to_sentence(words_connector: " #{I18n.t("or")} ")
+              }
+            }
+          end
+
+          def add_unmatched_field(field)
+            @data[:fields] ||= {}
+
+            @data[:fields].merge!(field)
           end
 
           def age
