@@ -23,16 +23,28 @@ module Decidim
           end
 
           def redirect_params
-            {
-              "document_types" => allowed_document_types&.join("-"),
-              "mimimum_age" => minimum_age
-            }
+            params = {}
+            params[:minimum_age] = minimum_age if authorizing_by_age?
+            params[:allowed_documents] = humanized_allowed_documents if authorizing_by_document_types?
+            params
           end
 
           private
 
+          def authorizing_by_age?
+            minimum_age.present?
+          end
+
+          def authorizing_by_document_types?
+            allowed_document_types.present?
+          end
+
+          def authorizing_by_age_and_document_types?
+            authorizing_by_age? && authorizing_by_document_types?
+          end
+
           def authorize_age
-            if minimum_age.present? && age < minimum_age
+            if authorizing_by_age? && age < minimum_age
               @status_code = :unauthorized
 
               add_unmatched_field("age" => age)
@@ -40,7 +52,7 @@ module Decidim
           end
 
           def authorize_document_types
-            if allowed_document_types.present? && document_type == "passport"
+            if authorizing_by_document_types? && document_type == "passport"
               @status_code = :unauthorized
 
               add_unmatched_field("document_type" => document_type_label)
@@ -48,16 +60,26 @@ module Decidim
           end
 
           def add_extra_explanation
-            return unless minimum_age.present? || allowed_document_types.present?
+            return unless authorizing_by_age? || authorizing_by_document_types?
+
+            key = if authorizing_by_age_and_document_types?
+                    "extra_explanation_age_and_document_type"
+                  elsif authorizing_by_age?
+                    "extra_explanation_age"
+                  else
+                    "extra_explanation_document_type"
+                  end
 
             @data[:extra_explanation] = {
-              key: "extra_explanation",
-              params: {
-                scope: "decidim.census_connector.verifications.census",
-                minimum_age: minimum_age,
-                allowed_documents: allowed_document_types.to_sentence(words_connector: " #{I18n.t("or", scope: "decidim.census_connector.verifications.census")} ")
-              }
+              key: key,
+              params: redirect_params.merge(scope: "decidim.census_connector.verifications.census")
             }
+          end
+
+          def humanized_allowed_documents
+            allowed_document_types.to_sentence(
+              words_connector: " #{I18n.t("or", scope: "decidim.census_connector.verifications.census")} "
+            )
           end
 
           def add_unmatched_field(field)

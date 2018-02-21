@@ -68,5 +68,7 @@ en:
           errors:
             age_under_minimum_age: You should be older than %{minimum_age} years old to register
             create: Error when saving
-          extra_explanation: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
+          extra_explanation_document_type: You need to be registered with %{allowed_documents}.
+          extra_explanation_age: You need to be a least %{minimum_age} years old.
+          extra_explanation_age_and_document_type: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
           or: or
