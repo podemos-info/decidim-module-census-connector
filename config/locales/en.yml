@@ -37,6 +37,9 @@ en:
     authorization_handlers:
       census:
         name: Census
+        fields:
+          age: Age
+          document_type: Document type
     census_connector:
       account:
         menu:
@@ -65,3 +68,5 @@ en:
           errors:
             age_under_minimum_age: You should be older than %{minimum_age} years old to register
             create: Error when saving
+          extra_explanation: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
+  or: or

@@ -37,6 +37,8 @@ es:
     authorization_handlers:
       census:
         name: Censo
+        fields:
+          born_at: Nacida el
       admin:
         census:
           help:
