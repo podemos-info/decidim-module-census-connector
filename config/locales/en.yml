@@ -6,7 +6,7 @@ en:
         address_scope_id: City
         born_at: Birth date
         document_number: Document number
-        document_type: Document Type
+        document_type: Document type
         document_scope_id: Document country
         first_name: Name
         gender: Gender
