@@ -53,7 +53,7 @@
               </div>
 
               <div class="field date">
-                <%= form.date_field :born_at, "data-start-view" => "decade", "data-date-format" => "dd-mm-yyyy", "data-date-startdate" => 120.years.ago.to_date, "data-date-enddate" => 14.years.ago.to_date %>
+                <%= form.date_field :born_at, "data-start-view" => "decade", "data-date-startdate" => 120.years.ago.to_date, "data-date-enddate" => 14.years.ago.to_date %>
               </div>
 
               <div class="field" data-local-scope-ranges="<%= local_scope_ranges.to_json %>">
