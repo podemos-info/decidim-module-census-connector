@@ -38,7 +38,8 @@ es:
       census:
         name: Censo
         fields:
-          born_at: Nacida el
+          age: Edad
+          document_type: Tipo de documento
       admin:
         census:
           help:
@@ -76,3 +77,4 @@ es:
   errors:
     messages:
       age_under_minimum_age: Debes tener más de %{minimum_age} años para registrarte
+  or: o
