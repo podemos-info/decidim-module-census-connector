@@ -73,8 +73,6 @@ es:
             membership_level:
               title: Elige tu nivel de compromiso
           errors:
+            age_under_minimum_age: Debes tener más de %{minimum_age} años para registrarte
             create: Se ha producido un error al guardar tus datos personales.
-  errors:
-    messages:
-      age_under_minimum_age: Debes tener más de %{minimum_age} años para registrarte
           or: o
