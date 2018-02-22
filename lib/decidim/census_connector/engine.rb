@@ -24,6 +24,26 @@ module Decidim
       initializer "decidim_census_connector.mount_routes" do
         Decidim.register_global_engine "decidim_census_account", Decidim::CensusConnector::Account::Engine, at: "census_account"
       end
+
+      def load_seed
+        Decidim::Organization.find_each do |organization|
+          break if Decidim::Scope.find_by(code: "ES", organization: organization)
+
+          country = Decidim::ScopeType.create_with(
+            plural: Decidim::Faker::Localized.literal("countries")
+          ).find_or_initialize_by(
+            name: Decidim::Faker::Localized.literal("country"),
+            organization: organization
+          )
+
+          Decidim::Scope.create!(
+            code: "ES",
+            organization: organization,
+            name: Decidim::Faker::Localized.literal(::Faker::Address.unique.state),
+            scope_type: country
+          )
+        end
+      end
     end
   end
 end
