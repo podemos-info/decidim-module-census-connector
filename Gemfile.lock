@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim/decidim
-  revision: 607bb0e6f4ffb3657389ba1de822e27fab82f2af
-  branch: improve_dummies
+  revision: c1921815e8542b70dea5248d46c4ad25d5ffe2be
+  branch: master
   specs:
     decidim (0.10.0.pre)
       decidim-accountability (= 0.10.0.pre)
