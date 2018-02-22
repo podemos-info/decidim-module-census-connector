@@ -45,6 +45,10 @@ module Decidim
             authorizing_by_age? && authorizing_by_document_types?
           end
 
+          def authorizing_by_age_or_document_types?
+            authorizing_by_age? || authorizing_by_document_types?
+          end
+
           def authorize_age
             if authorizing_by_age? && age < minimum_age
               @status_code = :unauthorized
@@ -62,20 +66,26 @@ module Decidim
           end
 
           def add_extra_explanation
-            return unless authorizing_by_age? || authorizing_by_document_types?
-
-            key = if authorizing_by_age_and_document_types?
-                    "extra_explanation_age_and_document_type"
-                  elsif authorizing_by_age?
-                    "extra_explanation_age"
-                  else
-                    "extra_explanation_document_type"
-                  end
+            return unless authorizing_by_age_or_document_types?
 
             @data[:extra_explanation] = {
-              key: key,
-              params: redirect_params.merge(scope: "decidim.census_connector.verifications.census")
+              key: extra_explanation_key,
+              params: extra_explanation_params
             }
+          end
+
+          def extra_explanation_key
+            if authorizing_by_age_and_document_types?
+              "extra_explanation_age_and_document_type"
+            elsif authorizing_by_age?
+              "extra_explanation_age"
+            else
+              "extra_explanation_document_type"
+            end
+          end
+
+          def extra_explanation_params
+            redirect_params.merge(scope: "decidim.census_connector.verifications.census")
           end
 
           def humanized_allowed_documents
