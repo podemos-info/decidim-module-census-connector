@@ -5,20 +5,121 @@ module Decidim
     module Verifications
       module Census
         class ActionAuthorizer < Decidim::Verifications::DefaultActionAuthorizer
-          attr_reader :allowed_postal_codes
-
           def authorize
-            # Remove the additional setting from the options hash to avoid to be considered missing.
-            @membership_level ||= options.delete("membership_level")
-            @scope ||= options.delete("scope")
+            @allowed_document_types = options.delete("allowed_document_types")
+            @minimum_age = options.delete("minimum_age")
 
-            status_code, data = *super
-            [status_code, data]
+            @status_code, @data = *super
+
+            return [@status_code, @data] if @status_code == :missing
+
+            authorize_age
+
+            authorize_document_types
+
+            add_extra_explanation unless @status_code == :ok
+
+            [@status_code, @data]
           end
 
-          # Adds the list of allowed postal codes to the redirect URL, to allow forms to inform about it
           def redirect_params
-            { "postal_codes" => allowed_postal_codes&.join("-") }
+            params = {}
+            params[:minimum_age] = minimum_age if authorizing_by_age?
+            params[:allowed_documents] = humanized_allowed_documents if authorizing_by_document_types?
+            params
+          end
+
+          private
+
+          def authorizing_by_age?
+            minimum_age.present?
+          end
+
+          def authorizing_by_document_types?
+            allowed_document_types.present?
+          end
+
+          def authorizing_by_age_and_document_types?
+            authorizing_by_age? && authorizing_by_document_types?
+          end
+
+          def authorizing_by_age_or_document_types?
+            authorizing_by_age? || authorizing_by_document_types?
+          end
+
+          def authorize_age
+            if authorizing_by_age? && age < minimum_age
+              @status_code = :unauthorized
+
+              add_unmatched_field("age" => age)
+            end
+          end
+
+          def authorize_document_types
+            if authorizing_by_document_types? && document_type == "passport"
+              @status_code = :unauthorized
+
+              add_unmatched_field("document_type" => document_type_label)
+            end
+          end
+
+          def add_extra_explanation
+            return unless authorizing_by_age_or_document_types?
+
+            @data[:extra_explanation] = {
+              key: extra_explanation_key,
+              params: extra_explanation_params
+            }
+          end
+
+          def extra_explanation_key
+            if authorizing_by_age_and_document_types?
+              "extra_explanation_age_and_document_type"
+            elsif authorizing_by_age?
+              "extra_explanation_age"
+            else
+              "extra_explanation_document_type"
+            end
+          end
+
+          def extra_explanation_params
+            redirect_params.merge(scope: "decidim.census_connector.verifications.census")
+          end
+
+          def humanized_allowed_documents
+            allowed_document_types.to_sentence(
+              words_connector: " #{I18n.t("or", scope: "decidim.census_connector.verifications.census")} "
+            )
+          end
+
+          def add_unmatched_field(field)
+            @data[:fields] ||= {}
+
+            @data[:fields].merge!(field)
+          end
+
+          def age
+            person.age
+          end
+
+          def document_type
+            person.document_type
+          end
+
+          def document_type_label
+            I18n.t(document_type, scope: "census.api.person.document_type")
+          end
+
+          def allowed_document_types
+            @allowed_document_types.split(",").map(&:chomp)
+          end
+
+          def minimum_age
+            @minimum_age&.to_i
+          end
+
+          def person
+            PersonProxy.new(authorization.metadata["person_id"]).person
           end
         end
       end

@@ -6,7 +6,7 @@ en:
         address_scope_id: City
         born_at: Birth date
         document_number: Document number
-        document_type: Document Type
+        document_type: Document type
         document_scope_id: Document country
         first_name: Name
         gender: Gender
@@ -37,6 +37,9 @@ en:
     authorization_handlers:
       census:
         name: Census
+        fields:
+          age: Age
+          document_type: Document type
     census_connector:
       account:
         menu:
@@ -65,3 +68,7 @@ en:
           errors:
             age_under_minimum_age: You should be older than %{minimum_age} years old to register
             create: Error when saving
+          extra_explanation_document_type: You need to be registered with %{allowed_documents}.
+          extra_explanation_age: You need to be a least %{minimum_age} years old.
+          extra_explanation_age_and_document_type: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
+          or: or
