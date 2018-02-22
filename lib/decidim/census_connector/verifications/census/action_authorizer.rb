@@ -22,7 +22,6 @@ module Decidim
             [@status_code, @data]
           end
 
-          # Adds the list of allowed postal codes to the redirect URL, to allow forms to inform about it
           def redirect_params
             {
               "document_types" => allowed_document_types&.join("-"),
