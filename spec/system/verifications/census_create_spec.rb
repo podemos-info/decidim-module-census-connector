@@ -28,7 +28,7 @@ describe "Census verification workflow", type: :system do
           "authorization_handler_name" => "census",
           "options" => {
             "minimum_age" => 18,
-            "allowed_document_types" => "dni,nie"
+            "allowed_document_types" => %w(dni nie)
           }
         }
       }

@@ -110,9 +110,7 @@ module Decidim
             I18n.t(document_type, scope: "census.api.person.document_type")
           end
 
-          def allowed_document_types
-            @allowed_document_types.split(",").map(&:chomp)
-          end
+          attr_reader :allowed_document_types
 
           def minimum_age
             @minimum_age&.to_i
