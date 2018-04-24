@@ -18,7 +18,7 @@ module Census
         response = yield
 
         http_response_code = response.code.to_i
-        return { http_response_code: http_response_code } if http_response_code == 500
+        return { http_response_code: http_response_code } if [500, 204].include?(http_response_code)
 
         json_response = JSON.parse(response.body, symbolize_names: true)
         json_response[:http_response_code] = http_response_code
