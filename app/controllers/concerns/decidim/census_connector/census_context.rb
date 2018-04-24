@@ -60,7 +60,7 @@ module Decidim
         end
 
         def person_id
-          @person_id ||= census_authorization.metadata["person_id"]&.to_i
+          @person_id ||= census_authorization.metadata["person_id"]
         end
 
         def has_person?
