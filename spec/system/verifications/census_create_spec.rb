@@ -144,10 +144,10 @@ describe "Census verification workflow", type: :system do
 
     year, month, day = birth_date.split("-")
 
-    page.execute_script("$('#date_field_data_handler_born_at').focus()")
-    page.find(".datepicker-dropdown .year", text: year).click
-    page.find(".datepicker-dropdown .month", text: month).click
-    page.find(".datepicker-dropdown .day", text: day).click
+    execute_script("$('#date_field_data_handler_born_at').focus()")
+    find(".datepicker-dropdown .year", text: year).click
+    find(".datepicker-dropdown .month", text: month).click
+    find(".datepicker-dropdown .day", text: day).click
 
     fill_in "Address", with: "Rua del Percebe, 1"
     fill_in "Postal code", with: "08001"
