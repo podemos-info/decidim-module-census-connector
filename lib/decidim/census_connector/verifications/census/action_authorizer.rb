@@ -56,7 +56,7 @@ module Decidim
           end
 
           def authorize_document_type
-            if authorizing_by_document_type? && document_type == "passport"
+            if authorizing_by_document_type? && !allowed_document_types.include?(document_type)
               @status_code = :unauthorized
 
               add_unmatched_field("document_type" => document_type_label)
