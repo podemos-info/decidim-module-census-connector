@@ -15,7 +15,7 @@ module Decidim
 
             authorize_age
 
-            authorize_document_types
+            authorize_document_type
 
             add_extra_explanation unless @status_code == :ok
 
@@ -25,7 +25,7 @@ module Decidim
           def redirect_params
             params = {}
             params[:minimum_age] = minimum_age if authorizing_by_age?
-            params[:allowed_documents] = humanized_allowed_documents if authorizing_by_document_types?
+            params[:allowed_documents] = humanized_allowed_documents if authorizing_by_document_type?
             params
           end
 
@@ -35,16 +35,16 @@ module Decidim
             minimum_age.present?
           end
 
-          def authorizing_by_document_types?
+          def authorizing_by_document_type?
             allowed_document_types.present?
           end
 
-          def authorizing_by_age_and_document_types?
-            authorizing_by_age? && authorizing_by_document_types?
+          def authorizing_by_age_and_document_type?
+            authorizing_by_age? && authorizing_by_document_type?
           end
 
-          def authorizing_by_age_or_document_types?
-            authorizing_by_age? || authorizing_by_document_types?
+          def authorizing_by_age_or_document_type?
+            authorizing_by_age? || authorizing_by_document_type?
           end
 
           def authorize_age
@@ -55,8 +55,8 @@ module Decidim
             end
           end
 
-          def authorize_document_types
-            if authorizing_by_document_types? && document_type == "passport"
+          def authorize_document_type
+            if authorizing_by_document_type? && document_type == "passport"
               @status_code = :unauthorized
 
               add_unmatched_field("document_type" => document_type_label)
@@ -64,7 +64,7 @@ module Decidim
           end
 
           def add_extra_explanation
-            return unless authorizing_by_age_or_document_types?
+            return unless authorizing_by_age_or_document_type?
 
             @data[:extra_explanation] = {
               key: extra_explanation_key,
@@ -73,7 +73,7 @@ module Decidim
           end
 
           def extra_explanation_key
-            if authorizing_by_age_and_document_types?
+            if authorizing_by_age_and_document_type?
               "extra_explanation_age_and_document_type"
             elsif authorizing_by_age?
               "extra_explanation_age"
