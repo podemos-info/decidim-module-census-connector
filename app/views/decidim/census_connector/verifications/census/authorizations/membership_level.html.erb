@@ -10,7 +10,7 @@
       <div class="columns large-6 medium-centered">
         <div class="card">
           <div class="card__content">
-            <%= decidim_form_for(@handler, url: decidim_census.authorization_path(step: current_step)) do |form| %>
+            <%= decidim_form_for(@handler, url: current_step_path) do |form| %>
               <div class="field">
                 <%= form.label :membership_level %>
                 <ul>

@@ -40,32 +40,27 @@ describe "Census verification workflow", type: :system do
   before do
     switch_to_host(organization.host)
     login_as user, scope: :user
+    visit resource_locator(dummy_resource).path
+    click_link "Foo"
   end
 
-  context "when person not registered with census" do
-    before do
-      visit resource_locator(dummy_resource).path
-      click_link "Foo"
-    end
-
-    it "shows popup to require verification" do
-      expect(page).to have_content(
-        'In order to perform this action, you need to be authorized with "Census"'
-      )
-    end
+  it "shows popup to require verification" do
+    expect(page).to have_content(
+      'In order to perform this action, you need to be authorized with "Census"'
+    )
   end
 
-  context "when person registered with census" do
+  context "when registering with census" do
     let(:age) { 18 }
     let(:document_type) { "DNI" }
 
     let(:cassette) { "regular_verification" }
 
     before do
+      click_link 'Authorize with "Census"'
+
       VCR.use_cassette(cassette) do
         register_with_census
-
-        visit resource_locator(dummy_resource).path
 
         click_link "Foo"
       end
@@ -125,8 +120,6 @@ describe "Census verification workflow", type: :system do
   private
 
   def register_with_census
-    visit decidim_census.root_path
-
     complete_data_step
     complete_document_step
     complete_membership_step

@@ -11,7 +11,7 @@ module Decidim
           helper Decidim::SanitizeHelper
 
           before_action :authorize
-          helper_method :current_step
+          helper_method :current_step_path
 
           STEPS = %w(data verification membership_level).freeze
 
@@ -81,8 +81,14 @@ module Decidim
             @next_path ||= if next_step
                              decidim_census.root_path(authorization_params.merge(step: next_step))
                            else
-                             decidim_verifications.authorizations_path(authorization_params.except(:step))
+                             authorization_params[:redirect_url] || decidim_verifications.authorizations_path(authorization_params.except(:step))
                            end
+          end
+
+          def current_step_path
+            @current_step_path ||= decidim_census.authorization_path(
+              authorization_params.merge(step: current_step)
+            )
           end
 
           def form_context
