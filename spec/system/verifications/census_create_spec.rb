@@ -13,7 +13,7 @@ describe "Census verification workflow", type: :system do
 
   let!(:user) { create(:user, :confirmed, organization: organization) }
 
-  let(:birth_date) { age.years.ago.strftime("%Y-%b-%d") }
+  let(:birth_date) { age.years.ago.strftime("%Y-%b-%-d") }
 
   let(:participatory_space) do
     create(:participatory_process, organization: organization)
@@ -144,10 +144,10 @@ describe "Census verification workflow", type: :system do
 
     year, month, day = birth_date.split("-")
 
-    page.execute_script("$('#date_field_data_handler_born_at').focus()")
-    page.find(".datepicker-dropdown .year", text: year).click
-    page.find(".datepicker-dropdown .month", text: month).click
-    page.find(".datepicker-dropdown .day", text: day).click
+    execute_script("$('#date_field_data_handler_born_at').focus()")
+    find(".datepicker-dropdown .year:not(.new):not(.old)", text: year, exact_text: true).click
+    find(".datepicker-dropdown .month:not(.new):not(.old)", text: month, exact_text: true).click
+    find(".datepicker-dropdown .day:not(.new):not(.old)", text: day, exact_text: true).click
 
     fill_in "Address", with: "Rua del Percebe, 1"
     fill_in "Postal code", with: "08001"
