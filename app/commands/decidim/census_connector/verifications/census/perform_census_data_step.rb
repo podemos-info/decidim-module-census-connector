@@ -7,17 +7,19 @@ module Decidim
         # A command to create a partial authorization for a user.
         class PerformCensusDataStep < PerformCensusStep
           def perform
-            res = :invalid
             if authorization.new_record?
+              broadcast :invalid unless handler.valid?
+
               handler.id = ::Census::API::Person.create(person_params)
-              ::Decidim::Verifications::AuthorizeUser.call(handler) do
-                on(:ok) { res = :ok }
-              end
+
+              authorization.metadata = { "person_id" => handler.id }
             else
               ::Census::API::Person.update(handler.id, person_params)
-              res = :ok
             end
-            broadcast(res)
+
+            authorization.grant!
+
+            broadcast :ok
           end
 
           private
