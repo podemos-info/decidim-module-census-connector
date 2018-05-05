@@ -48,19 +48,21 @@ module Decidim
           end
 
           def authorize_age
-            if authorizing_by_age? && age < minimum_age
-              @status_code = :unauthorized
+            return unless authorizing_by_age? && age < minimum_age
 
-              add_unmatched_field("age" => age)
-            end
+            add_authorization_error("age", age)
           end
 
           def authorize_document_type
-            if authorizing_by_document_type? && !allowed_document_types.include?(document_type)
-              @status_code = :unauthorized
+            return unless authorizing_by_document_type? && !allowed_document_types.include?(document_type)
 
-              add_unmatched_field("document_type" => document_type_label)
-            end
+            add_authorization_error("document_type", document_type_label)
+          end
+
+          def add_authorization_error(field, error)
+            @status_code = :unauthorized
+
+            add_unmatched_field(field => error)
           end
 
           def add_extra_explanation
