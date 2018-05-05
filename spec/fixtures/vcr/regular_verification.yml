@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:3001/api/v1/people
     body:
       encoding: UTF-8
-      string: first_name=Peter&last_name1=Lopez&last_name2=&document_type=dni&document_id=71195206V&born_at=2000-05-04&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=08001&extra[participa_id]=199&email=user3%40example.org&document_scope_code=ES&scope_code=ES&address_scope_code=ES
+      string: first_name=Peter&last_name1=Lopez&last_name2=&document_type=dni&document_id=71195206V&born_at=2000-05-05&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=08001&extra[participa_id]=361&email=user3%40example.org&document_scope_code=ES&scope_code=ES&address_scope_code=ES
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -23,14 +23,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=ffe81f5f-6b36-404e-b925-8034c2d45a8f; path=/; expires=Sat, 05 May
-        2018 03:02:59 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=a2012caf-1b39-4e02-aa68-d223ebcb3dbb; path=/; expires=Mon, 04
-        May 2020 23:02:59 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=468ed44f-fc1a-4218-b4d8-51214e4fa4c4; path=/; expires=Sat, 05 May
+        2018 04:34:29 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=be6973d4-2276-4485-a0f6-473532f0f5a8; path=/; expires=Tue, 05
+        May 2020 00:34:29 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 8edd7400-da55-4b9c-91b7-5be187f222f8
+      - 0a512d12-f555-4e35-972f-d74603cd03e9
       X-Runtime:
-      - '0.289868'
+      - '0.317900'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -54,7 +54,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"person_id":1}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:02:59 GMT
+  recorded_at: Sat, 05 May 2018 00:34:29 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -76,18 +76,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
+      - W/"c099083ec0ec9f34184bba408c672b5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=d3eaf922-ec14-4e22-bca3-4a9a4b9f3323; path=/; expires=Sat, 05 May
-        2018 03:02:59 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=01214cfa-b1ff-40ae-a8bf-78cf8c250568; path=/; expires=Mon, 04
-        May 2020 23:02:59 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=4c7fccb3-7e10-4040-a393-73540c93cd8f; path=/; expires=Sat, 05 May
+        2018 04:34:29 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1e55593f-deff-4c01-9caf-3505bb5e8519; path=/; expires=Tue, 05
+        May 2020 00:34:29 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - dde1433f-ef9d-4230-b881-b71dec2c41e8
+      - 3a57530b-20f7-45c4-8ca1-4d0417c3997d
       X-Runtime:
-      - '0.089481'
+      - '0.080840'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -109,10 +109,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:02:59 GMT
+  recorded_at: Sat, 05 May 2018 00:34:29 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -134,18 +134,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
+      - W/"c099083ec0ec9f34184bba408c672b5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=61539fd1-0b03-45f5-8799-64600b36dc6d; path=/; expires=Sat, 05 May
-        2018 03:03:00 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=6ba9aaf8-42ad-4955-8d7a-963324c5060b; path=/; expires=Mon, 04
-        May 2020 23:03:00 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=ad063719-74aa-42fd-8fdf-94b979fb941c; path=/; expires=Sat, 05 May
+        2018 04:34:30 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=93de3aa4-fb84-48ff-a3d0-19a896cd2c59; path=/; expires=Tue, 05
+        May 2020 00:34:30 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 3891fe26-a4ca-4548-b18f-026041962466
+      - 8a79a123-9dd7-445c-9afd-3ac29154f6f6
       X-Runtime:
-      - '0.007297'
+      - '0.008155'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -167,10 +167,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:00 GMT
+  recorded_at: Sat, 05 May 2018 00:34:30 GMT
 - request:
     method: post
     uri: http://localhost:3001/api/v1/people/1@census/document_verifications
@@ -194,14 +194,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=b1671ec0-0e71-4f15-9537-70dae4c8d7fa; path=/; expires=Sat, 05 May
-        2018 03:03:00 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=9845a006-46e5-440f-900a-f7561e1a7996; path=/; expires=Mon, 04
-        May 2020 23:03:00 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=8ca430f0-321c-4204-8eea-386732999530; path=/; expires=Sat, 05 May
+        2018 04:34:30 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=1260d5d0-f8e0-4c41-b88c-3b8d9c0cb06e; path=/; expires=Tue, 05
+        May 2020 00:34:30 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 207b3652-7bc6-4c4e-bf95-d7329a95c053
+      - 636df6af-33a7-4597-99ee-bde8251129f5
       X-Runtime:
-      - '0.270117'
+      - '0.247771'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -225,7 +225,7 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:00 GMT
+  recorded_at: Sat, 05 May 2018 00:34:30 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -247,18 +247,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
+      - W/"c099083ec0ec9f34184bba408c672b5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=c64a4537-ce55-4a1c-b19f-7a90dae5cf89; path=/; expires=Sat, 05 May
-        2018 03:03:00 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=bb03b6ed-a4dd-4598-9c2b-c84e5f7b8cb4; path=/; expires=Mon, 04
-        May 2020 23:03:00 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=4b385a0d-519d-4a46-be47-480a936775e9; path=/; expires=Sat, 05 May
+        2018 04:34:30 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=ae873a6d-2b37-4df3-b12a-0d7f610c8595; path=/; expires=Tue, 05
+        May 2020 00:34:30 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - c00bfd00-3a27-4c12-aef5-2ae2bcb55e3f
+      - a2f4f1f0-4a0b-4885-b65c-a4b5e930b556
       X-Runtime:
-      - '0.008524'
+      - '0.007076'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -280,10 +280,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:00 GMT
+  recorded_at: Sat, 05 May 2018 00:34:30 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -305,18 +305,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
+      - W/"c099083ec0ec9f34184bba408c672b5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=23811285-669a-4fbf-8540-3018b79fb7ea; path=/; expires=Sat, 05 May
-        2018 03:03:01 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=d9ee4f25-5c52-433b-b2cf-5b08d442bc86; path=/; expires=Mon, 04
-        May 2020 23:03:01 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=5c9481ed-71fa-4bd3-af73-45203d4f199a; path=/; expires=Sat, 05 May
+        2018 04:34:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=f40db0d9-3606-479b-9327-977f96d5f867; path=/; expires=Tue, 05
+        May 2020 00:34:31 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - ae244612-b881-401b-9f80-7e2e6f161df5
+      - b693ce3a-4896-4b21-8717-40cd2e21987d
       X-Runtime:
-      - '0.008239'
+      - '0.007600'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -338,10 +338,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:01 GMT
+  recorded_at: Sat, 05 May 2018 00:34:31 GMT
 - request:
     method: post
     uri: http://localhost:3001/api/v1/people/1@census/membership_levels
@@ -363,14 +363,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=8acf3168-03d7-4a9c-8933-7ade9c475484; path=/; expires=Sat, 05 May
-        2018 03:03:01 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=0355bcde-2563-439e-9f78-9a929f421027; path=/; expires=Mon, 04
-        May 2020 23:03:01 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=de31a47f-7367-4438-a99a-066f45a87848; path=/; expires=Sat, 05 May
+        2018 04:34:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=dcd15f9a-810b-4b1c-a464-1575ac493417; path=/; expires=Tue, 05
+        May 2020 00:34:31 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - a41c8ea8-c5d8-4a40-b758-dadbbb2706e0
+      - a0e36dd5-9c09-4000-804c-38639d5ca48c
       X-Runtime:
-      - '0.011457'
+      - '0.010537'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -392,7 +392,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:01 GMT
+  recorded_at: Sat, 05 May 2018 00:34:31 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -414,18 +414,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
+      - W/"c099083ec0ec9f34184bba408c672b5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=772ac847-b2a7-48a3-8052-f2a851b9e00d; path=/; expires=Sat, 05 May
-        2018 03:03:01 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=11e95562-1bd4-4b6c-acac-c6e823e71173; path=/; expires=Mon, 04
-        May 2020 23:03:01 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=982fdab1-2d2a-46b3-a070-d5d0222c4efb; path=/; expires=Sat, 05 May
+        2018 04:34:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=78e13d34-6192-4c89-b55a-683ace24080c; path=/; expires=Tue, 05
+        May 2020 00:34:31 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 38f1e963-bf52-49c1-aa20-49cdae54f0e3
+      - f41ac22f-cde3-4320-9c51-336f67ec8877
       X-Runtime:
-      - '0.009422'
+      - '0.006787'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -447,10 +447,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:01 GMT
+  recorded_at: Sat, 05 May 2018 00:34:31 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -472,18 +472,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
+      - W/"c099083ec0ec9f34184bba408c672b5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=7c4f2551-dc7b-48dc-8678-b633b381c64b; path=/; expires=Sat, 05 May
-        2018 03:03:01 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=f0d417a4-2d12-496f-a346-cb5aba0e0a78; path=/; expires=Mon, 04
-        May 2020 23:03:01 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=1fa8fa2f-8d6e-4036-96fd-1c492e742d6a; path=/; expires=Sat, 05 May
+        2018 04:34:31 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=5fa97413-d2af-418e-b092-4c937582bc41; path=/; expires=Tue, 05
+        May 2020 00:34:31 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 76e7a4da-cc5a-4902-9198-90796f94b160
+      - 92294270-17dc-4e30-beb1-ad590af4b9a3
       X-Runtime:
-      - '0.006696'
+      - '0.011630'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -505,10 +505,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:01 GMT
+  recorded_at: Sat, 05 May 2018 00:34:31 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -530,18 +530,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
+      - W/"c099083ec0ec9f34184bba408c672b5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=a832b13f-5780-44b5-b64a-b370767bf54f; path=/; expires=Sat, 05 May
-        2018 03:03:01 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=e8ada58e-ffaf-407e-800e-c84be9d21a11; path=/; expires=Mon, 04
-        May 2020 23:03:01 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=d034bab4-c36c-468c-8132-3eaeaf81e004; path=/; expires=Sat, 05 May
+        2018 04:34:32 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=7139db1e-c4e6-4d8e-b7de-ec24947bd4a5; path=/; expires=Tue, 05
+        May 2020 00:34:32 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 6d010361-634d-404d-8a9b-0db5731abadf
+      - 33490f3e-588e-4193-8b39-e6a8d7b1f650
       X-Runtime:
-      - '0.006673'
+      - '0.007063'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -563,182 +563,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:01 GMT
-- request:
-    method: get
-    uri: http://localhost:3001/api/v1/people/1@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_visit=c8d5bf49-2c21-49e5-bfd7-2e63f39a3da5; path=/; expires=Sat, 05 May
-        2018 03:03:01 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=6538bb38-2585-42e4-af0c-436e1b9e9b9d; path=/; expires=Mon, 04
-        May 2020 23:03:01 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - a3a7dd6c-df56-4eae-94e4-12033f91ff26
-      X-Runtime:
-      - '0.008358'
-      Clear-Site-Data:
-      - '"storage", "executionContexts"'
-      Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Referrer-Policy:
-      - origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - 1; mode=block
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
-    http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:01 GMT
-- request:
-    method: get
-    uri: http://localhost:3001/api/v1/people/1@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_visit=873d0840-7a20-49a1-be6c-cdcf72fc7de0; path=/; expires=Sat, 05 May
-        2018 03:03:02 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=aeaa2fa4-6fe3-4b89-9297-0367229aabee; path=/; expires=Mon, 04
-        May 2020 23:03:02 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - 62088d07-aa21-4ed1-b85c-a490763e9cd1
-      X-Runtime:
-      - '0.007321'
-      Clear-Site-Data:
-      - '"storage", "executionContexts"'
-      Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Referrer-Policy:
-      - origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - 1; mode=block
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
-    http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:02 GMT
-- request:
-    method: get
-    uri: http://localhost:3001/api/v1/people/1@census
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"24401fbe09ff11cb62dd7a55580c8d64"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - ahoy_visit=4f68a972-6be0-4597-9d0b-63739a526f95; path=/; expires=Sat, 05 May
-        2018 03:03:02 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=15aba5fe-99fc-4de5-895d-6dfc17b0e13d; path=/; expires=Mon, 04
-        May 2020 23:03:02 -0000; HttpOnly; SameSite=Lax
-      X-Request-Id:
-      - 6229b283-bd90-4346-afc4-894f8f819362
-      X-Runtime:
-      - '0.008800'
-      Clear-Site-Data:
-      - '"storage", "executionContexts"'
-      Content-Security-Policy:
-      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
-        ''self'' ''unsafe-inline''; report-uri /csp-report'
-      Referrer-Policy:
-      - origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - 1; mode=block
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-04","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
-    http_version: 
-  recorded_at: Fri, 04 May 2018 23:03:02 GMT
+  recorded_at: Sat, 05 May 2018 00:34:32 GMT
 recorded_with: VCR 4.0.0

@@ -117,7 +117,7 @@ module Decidim
           end
 
           def person
-            PersonProxy.new(authorization.metadata["person_id"]).person
+            @person ||= PersonProxy.new(authorization.metadata["person_id"]).person
           end
         end
       end
