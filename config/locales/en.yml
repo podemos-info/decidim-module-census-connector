@@ -40,10 +40,17 @@ en:
         fields:
           age: Age
           document_type: Document type
+      admin:
+        census:
+          help:
+            - People registered at Podemos census
     census_connector:
       account:
         menu:
           census: Census
+        account:
+          index:
+            title: Census registration
       verifications:
         census:
           authorizations:
@@ -72,3 +79,8 @@ en:
           extra_explanation_age: You need to be a least %{minimum_age} years old.
           extra_explanation_age_and_document_type: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
           or: or
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            census: Get verified with Podemos census to get full access to the platform

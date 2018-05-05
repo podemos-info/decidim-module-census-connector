@@ -79,3 +79,8 @@ es:
           extra_explanation_age: Necesitas tener al menos %{minimum_age} años.
           extra_explanation_age_and_document_type: Necesitas tener al menos %{minimum_age} años y estar registrada usando %{allowed_documents}.
           or: o
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            census: Verifícate en el censo de Podemos census para tener acceso a toda la plataforma
