@@ -11,7 +11,7 @@ describe "Census verification workflow", type: :system do
 
   let!(:scope) { create(:scope, code: "ES", id: 1) }
 
-  let!(:user) { create(:user, :confirmed, organization: organization) }
+  let(:user) { create(:user, :confirmed, organization: organization) }
 
   let(:birth_date) { age.years.ago.strftime("%Y-%b-%-d") }
 
