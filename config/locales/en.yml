@@ -48,9 +48,6 @@ en:
       account:
         menu:
           census: Census
-        account:
-          index:
-            title: Census registration
       verifications:
         census:
           authorizations:

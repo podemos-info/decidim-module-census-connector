@@ -48,9 +48,6 @@ es:
       account:
         menu:
           census: Censo
-        account:
-          index:
-            title: Inscripción en el censo
       verifications:
         census:
           authorizations:
