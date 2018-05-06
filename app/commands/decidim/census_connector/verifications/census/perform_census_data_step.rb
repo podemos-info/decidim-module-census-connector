@@ -17,16 +17,20 @@ module Decidim
               ::Census::API::Person.update(handler.id, person_params)
             end
 
-            if person.enabled?
-              authorization.grant!
-            else
-              authorization.save!
-            end
+            update_authorization
 
             broadcast :ok
           end
 
           private
+
+          def update_authorization
+            if person.enabled?
+              authorization.grant!
+            else
+              authorization.save!
+            end
+          end
 
           def person_params
             attributes.except(:document_scope_id, :scope_id, :address_scope_id).merge(
