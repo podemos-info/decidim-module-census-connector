@@ -9,16 +9,16 @@ module Census
       MEMBERSHIP_LEVELS = %w(follower member activist).freeze
 
       def self.document_types
-        @document_types ||= Hash[DOCUMENT_TYPES.map { |type| [I18n.t(type, scope: "census.api.person.document_type"), type] }].freeze
+        @document_types ||= Hash[DOCUMENT_TYPES.map { |type| [I18n.t("census.api.person.document_type.#{type}"), type] }].freeze
       end
 
       def self.genders
-        @genders ||= Hash[GENDERS.map { |gender| [I18n.t(gender, scope: "census.api.person.gender"), gender] }].freeze
+        @genders ||= Hash[GENDERS.map { |gender| [I18n.t("census.api.person.gender.#{gender}"), gender] }].freeze
       end
 
       def self.membership_levels
         @membership_levels ||= Hash[MEMBERSHIP_LEVELS.map do |membership_level|
-          [I18n.t(membership_level, scope: "census.api.person.membership_level"), membership_level]
+          [I18n.t("census.api.person.membership_level.#{membership_level}"), membership_level]
         end].freeze
       end
 
