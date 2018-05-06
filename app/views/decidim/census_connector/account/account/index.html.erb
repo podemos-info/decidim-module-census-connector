@@ -1,4 +1,12 @@
 <% if has_person? %>
+  <% if person.pending? %>
+    <div class="callout announcement secondary">
+      <div class="row column">
+        Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
+      </div>
+    </div>
+  <% end %>
+
   <div class="card card--list">
     <div class="card--list__item">
       <div class="card--list__text">

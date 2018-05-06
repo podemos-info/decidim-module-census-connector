@@ -40,6 +40,10 @@ module Decidim
             end
           end
 
+          def edit
+            redirect_to decidim_census_account.root_path
+          end
+
           def update
             create
           end

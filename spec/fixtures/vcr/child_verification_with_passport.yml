@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:3001/api/v1/people
     body:
       encoding: UTF-8
-      string: first_name=Peter&last_name1=Lopez&last_name2=&document_type=passport&document_id=R7232537748&born_at=2001-05-05&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=08001&extra[participa_id]=365&email=user7%40example.org&document_scope_code=ES&scope_code=ES&address_scope_code=ES
+      string: first_name=Peter&last_name1=Lopez&last_name2=&document_type=passport&document_id=R7232537748&born_at=2001-05-05&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=08001&extra[participa_id]=507&email=user7%40example.org&document_scope_code=ES&scope_code=ES&address_scope_code=ES
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -23,14 +23,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=d49d8bd3-0348-4252-8287-de439d0d4c99; path=/; expires=Sat, 05 May
-        2018 04:34:46 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=0b7fcf02-259c-4af2-936a-926424b18081; path=/; expires=Tue, 05
-        May 2020 00:34:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=ee05a369-e42b-4436-9e03-6a72e2c9fecc; path=/; expires=Sat, 05 May
+        2018 20:56:05 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=f9f3c591-bb4e-4de7-952c-97f68b482766; path=/; expires=Tue, 05
+        May 2020 16:56:05 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - bb8bc100-dca6-471c-908e-9344327f0268
+      - 6c00871e-3790-434f-a661-b6a6a8da5bb6
       X-Runtime:
-      - '0.043275'
+      - '0.041693'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -54,7 +54,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"person_id":3}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:46 GMT
+  recorded_at: Sat, 05 May 2018 16:56:05 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/3@census
@@ -80,14 +80,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=0b4cc570-c9da-44cb-b72d-79a1ca433da3; path=/; expires=Sat, 05 May
-        2018 04:34:46 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=f2c7e595-fdb5-4413-9422-2e77f21a030e; path=/; expires=Tue, 05
-        May 2020 00:34:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=5518cb18-7467-499f-9e9e-7863212519ca; path=/; expires=Sat, 05 May
+        2018 20:56:05 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=f870a34c-4686-48c9-bdd8-5162d5d6fccc; path=/; expires=Tue, 05
+        May 2020 16:56:05 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - c4342ae2-9e25-460b-b36c-5d9a0d14325f
+      - 02a2ce2d-baa5-487b-a516-b1f68927d217
       X-Runtime:
-      - '0.013646'
+      - '0.015770'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -112,7 +112,7 @@ http_interactions:
       string: '{"id":3,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"passport","document_id":"R7232537748","born_at":"2001-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:46 GMT
+  recorded_at: Sat, 05 May 2018 16:56:05 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/3@census
@@ -138,14 +138,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=442a6ff4-91b4-439f-93c9-a70751f0687b; path=/; expires=Sat, 05 May
-        2018 04:34:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=73b54a1a-6b33-4d26-8e29-9a11f5314dfc; path=/; expires=Tue, 05
-        May 2020 00:34:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=e8e4ebe1-2a73-4230-bb53-3d1e0bfb7d8e; path=/; expires=Sat, 05 May
+        2018 20:56:05 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=4ed8082d-befd-4482-9cb2-2f797c64297a; path=/; expires=Tue, 05
+        May 2020 16:56:05 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 50c457ea-c84e-4427-9b02-fe90132c5a7b
+      - dfe82aa7-e43b-467b-bd36-89ef6e147493
       X-Runtime:
-      - '0.009766'
+      - '0.011970'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -170,7 +170,65 @@ http_interactions:
       string: '{"id":3,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"passport","document_id":"R7232537748","born_at":"2001-05-05","gender":"female","address":"Rua
         del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:47 GMT
+  recorded_at: Sat, 05 May 2018 16:56:05 GMT
+- request:
+    method: get
+    uri: http://localhost:3001/api/v1/people/3@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"a90993ea8c47a45bbcc003ee9ed7ae19"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=156fa41f-58f0-4b33-a581-98949e406d0b; path=/; expires=Sat, 05 May
+        2018 20:56:06 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=8a18d998-58d4-4369-9506-0500d1e6d9c9; path=/; expires=Tue, 05
+        May 2020 16:56:06 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - bc29e5ae-4ecb-4026-bf64-6fec640720cc
+      X-Runtime:
+      - '0.007834'
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Referrer-Policy:
+      - origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":3,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"passport","document_id":"R7232537748","born_at":"2001-05-05","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
+    http_version: 
+  recorded_at: Sat, 05 May 2018 16:56:06 GMT
 - request:
     method: post
     uri: http://localhost:3001/api/v1/people/3@census/document_verifications
@@ -194,14 +252,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=90304e98-e80f-47e8-8924-ffc2ebeb4f43; path=/; expires=Sat, 05 May
-        2018 04:34:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=e5bc6a7c-433d-44ff-ba56-3c23efb3dd34; path=/; expires=Tue, 05
-        May 2020 00:34:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=2925b46a-1b08-4015-ac45-3c4118c4bdb5; path=/; expires=Sat, 05 May
+        2018 20:56:06 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=d47be0c8-b94b-4728-833f-0a7f3bb7a029; path=/; expires=Tue, 05
+        May 2020 16:56:06 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - aa99dcbb-f5d5-4e29-ba0e-df46675cd99f
+      - d6733274-4e5a-47bb-80ed-3fec51d7773b
       X-Runtime:
-      - '0.205044'
+      - '0.200335'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -225,7 +283,7 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:47 GMT
+  recorded_at: Sat, 05 May 2018 16:56:06 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/3@census
@@ -247,18 +305,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c726fbbb5394fe42247b99463c46c8bf"
+      - W/"a90993ea8c47a45bbcc003ee9ed7ae19"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=8f67b46d-3a48-4288-93df-187d67f8d1d2; path=/; expires=Sat, 05 May
-        2018 04:34:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=4bd81f2a-4837-4267-a1bb-d25149f6357e; path=/; expires=Tue, 05
-        May 2020 00:34:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=e28fe2f9-0846-4724-9ed7-c3719ed4773e; path=/; expires=Sat, 05 May
+        2018 20:56:06 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=9b0361d5-f410-4f0f-a77a-b07f9a89202c; path=/; expires=Tue, 05
+        May 2020 16:56:06 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 1d055797-4fbc-4dfe-b3d3-8fc880e60b28
+      - 8fdda30a-e69b-4e96-860c-a927d651ef22
       X-Runtime:
-      - '0.006712'
+      - '0.006507'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -281,9 +339,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":3,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"passport","document_id":"R7232537748","born_at":"2001-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
+        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:47 GMT
+  recorded_at: Sat, 05 May 2018 16:56:06 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/3@census
@@ -305,18 +363,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c726fbbb5394fe42247b99463c46c8bf"
+      - W/"a90993ea8c47a45bbcc003ee9ed7ae19"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=48b59939-7bb3-46f3-8555-d70e21129456; path=/; expires=Sat, 05 May
-        2018 04:34:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=9327541d-8ef9-46ca-bce8-965037d3ad2b; path=/; expires=Tue, 05
-        May 2020 00:34:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=0c1874a3-29d3-4c2a-935e-1fdfb8c4e866; path=/; expires=Sat, 05 May
+        2018 20:56:07 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=0834a50d-3b17-4bbf-b990-56977c4fae58; path=/; expires=Tue, 05
+        May 2020 16:56:07 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 6a9a7475-4868-4bed-b5e5-ac6026bb46b8
+      - 8f4e945d-f803-4d74-812b-5b7b6bf6ca5b
       X-Runtime:
-      - '0.007875'
+      - '0.007779'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -339,9 +397,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":3,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"passport","document_id":"R7232537748","born_at":"2001-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
+        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:47 GMT
+  recorded_at: Sat, 05 May 2018 16:56:07 GMT
 - request:
     method: post
     uri: http://localhost:3001/api/v1/people/3@census/membership_levels
@@ -363,14 +421,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=9db5b991-8865-4eef-8ca2-007fd28e32aa; path=/; expires=Sat, 05 May
-        2018 04:34:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=4445e560-7b43-474b-a316-299709996318; path=/; expires=Tue, 05
-        May 2020 00:34:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=02e7f4b9-dbf3-43fb-9100-3e09815a8108; path=/; expires=Sat, 05 May
+        2018 20:56:07 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=ec0bfb96-cd41-4172-b51f-1af7d1a99d08; path=/; expires=Tue, 05
+        May 2020 16:56:07 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - fccd8bc8-0871-47b4-aa7f-7b5454b29e3b
+      - 84cf89eb-3c36-4ad3-9f4a-6d54d23be416
       X-Runtime:
-      - '0.005603'
+      - '0.006682'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -392,7 +450,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:47 GMT
+  recorded_at: Sat, 05 May 2018 16:56:07 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/3@census
@@ -414,18 +472,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c726fbbb5394fe42247b99463c46c8bf"
+      - W/"a90993ea8c47a45bbcc003ee9ed7ae19"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=e2683d41-0390-4dbb-952c-8454a1044936; path=/; expires=Sat, 05 May
-        2018 04:34:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=d82cbed6-75e3-4475-bbfc-c27831b3d3f9; path=/; expires=Tue, 05
-        May 2020 00:34:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=28610ab2-6ff4-4a13-80aa-5340ffe6cdda; path=/; expires=Sat, 05 May
+        2018 20:56:07 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=c3946ba8-f686-4fa3-8fd2-6e0c3d698a0d; path=/; expires=Tue, 05
+        May 2020 16:56:07 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - e275d7c0-65a0-4d42-9a60-7c0ec623722c
+      - f4fa1f32-c579-4d9b-a3d6-f41d3a5e2b59
       X-Runtime:
-      - '0.007920'
+      - '0.009005'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -448,9 +506,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":3,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"passport","document_id":"R7232537748","born_at":"2001-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
+        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:47 GMT
+  recorded_at: Sat, 05 May 2018 16:56:07 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/3@census
@@ -472,18 +530,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c726fbbb5394fe42247b99463c46c8bf"
+      - W/"a90993ea8c47a45bbcc003ee9ed7ae19"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=453a6d0e-62f6-44e9-9329-7005ed1a1a26; path=/; expires=Sat, 05 May
-        2018 04:34:48 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=be0481fb-c8cf-4430-8d90-ff94f2804c97; path=/; expires=Tue, 05
-        May 2020 00:34:48 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=fba4e64d-d15c-427d-9420-9d149e04e5b4; path=/; expires=Sat, 05 May
+        2018 20:56:07 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=f0444f29-8aa4-477a-923e-64997ef6a4d6; path=/; expires=Tue, 05
+        May 2020 16:56:07 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - e3a8cfbd-975c-4425-8822-5a18ba7e7983
+      - 6d91ba23-2647-4f10-9023-582bc2d56272
       X-Runtime:
-      - '0.010465'
+      - '0.007078'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -506,7 +564,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":3,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"passport","document_id":"R7232537748","born_at":"2001-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
+        del Percebe, 1","postal_code":"08001","email":"user7@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 00:34:48 GMT
+  recorded_at: Sat, 05 May 2018 16:56:07 GMT
 recorded_with: VCR 4.0.0

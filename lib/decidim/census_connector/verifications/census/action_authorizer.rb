@@ -17,7 +17,9 @@ module Decidim
 
             authorize_document_type
 
-            add_extra_explanation unless @status_code == :ok
+            authorize_state
+
+            add_extra_explanation unless [:ok, :pending].include?(@status_code)
 
             [@status_code, @data]
           end
@@ -59,7 +61,27 @@ module Decidim
             add_authorization_error("document_type", document_type_label)
           end
 
+          def authorize_state
+            return unless @status_code == :pending
+
+            if person.enabled?
+              @status_code = :ok
+
+              authorization.grant!
+            else
+              authorization.update!(granted_at: nil)
+            end
+          end
+
           def add_authorization_error(field, error)
+            # Due to current authorizations implementation details, pending
+            # authorizations are not "granted in DB", whereas unauthorized ones
+            # are. So we need to force the authorization to be granted in order
+            # for decidim UI to properly display authorization errors instead of
+            # a "pending authorization" modal. This is a hacky-not-good-enough
+            # solution we should iterate over
+            authorization.grant!
+
             @status_code = :unauthorized
 
             add_unmatched_field(field => error)

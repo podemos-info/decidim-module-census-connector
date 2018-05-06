@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:3001/api/v1/people
     body:
       encoding: UTF-8
-      string: first_name=Peter&last_name1=Lopez&last_name2=&document_type=dni&document_id=71195206V&born_at=2000-05-05&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=08001&extra[participa_id]=503&email=user3%40example.org&document_scope_code=ES&scope_code=ES&address_scope_code=ES
+      string: first_name=Peter&last_name1=Lopez&last_name2=&document_type=dni&document_id=71195206V&born_at=2000-05-06&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=08001&extra[participa_id]=43&email=scammer%40mailinator.com&document_scope_code=ES&scope_code=ES&address_scope_code=ES
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -23,14 +23,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=11c1ec5f-46d3-4b5e-b175-96d78b989b9b; path=/; expires=Sat, 05 May
-        2018 20:55:45 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=2b012fda-d1f5-4bfb-944d-997cebe40e5c; path=/; expires=Tue, 05
-        May 2020 16:55:45 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=513106a0-01a9-4b61-bb50-7bfbd5c58068; path=/; expires=Sun, 06 May
+        2018 04:48:52 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=50cf9084-9c8d-4cc4-8e13-838e7bc10350; path=/; expires=Wed, 06
+        May 2020 00:48:52 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 894b6bb6-fff7-4ed9-a4f4-92f79a5213e1
+      - be370b73-6350-483c-b388-3063e4461258
       X-Runtime:
-      - '0.297452'
+      - '0.352042'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -54,7 +54,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"person_id":1}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:45 GMT
+  recorded_at: Sun, 06 May 2018 00:48:52 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -76,18 +76,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c099083ec0ec9f34184bba408c672b5d"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=d95e9d13-b4b0-48b7-989b-e6c47a90489b; path=/; expires=Sat, 05 May
-        2018 20:55:45 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=4d4e56f2-a23b-4e70-9adf-68ccfbceb76e; path=/; expires=Tue, 05
-        May 2020 16:55:45 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=f1ee7c5b-f475-4614-b68d-63bf50a82a5a; path=/; expires=Sun, 06 May
+        2018 04:48:52 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=5733c3dc-30fb-467d-88d2-419b5d0327fb; path=/; expires=Wed, 06
+        May 2020 00:48:52 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - a658994c-655a-424a-a10b-fa03084ee258
+      - 44bb33a6-d562-43bf-a607-a9d8c0475b0e
       X-Runtime:
-      - '0.042658'
+      - '0.103872'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -109,10 +109,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:46 GMT
+  recorded_at: Sun, 06 May 2018 00:48:52 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -134,18 +134,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c099083ec0ec9f34184bba408c672b5d"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=a7f4ef41-27ef-4dcb-8213-494de2919800; path=/; expires=Sat, 05 May
-        2018 20:55:46 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=76cd19ac-e924-4d8c-9a06-407653802cee; path=/; expires=Tue, 05
-        May 2020 16:55:46 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=c631fd63-69a9-407e-b49c-85c270767126; path=/; expires=Sun, 06 May
+        2018 04:48:52 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=82b76cb7-00d4-4999-a03d-af3bbf27e8b5; path=/; expires=Wed, 06
+        May 2020 00:48:52 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 43c84f0a-f46f-4a29-b430-dd06e9ddec1a
+      - 06e1efcb-6592-4a68-b99b-d50b630584f0
       X-Runtime:
-      - '0.009507'
+      - '0.021875'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -167,10 +167,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:46 GMT
+  recorded_at: Sun, 06 May 2018 00:48:52 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -192,18 +192,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0797c73c4c6e86a4231b6782a48accb7"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=2e11b55e-fa9d-4309-b9fd-ebe4356095fa; path=/; expires=Sat, 05 May
-        2018 20:55:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=2e211a50-240d-4def-b939-6f8d348a2edc; path=/; expires=Tue, 05
-        May 2020 16:55:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=6d69960d-0033-4130-80b9-be49a820044d; path=/; expires=Sun, 06 May
+        2018 04:48:53 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=21a29a45-c355-4db2-87a8-3141e2a8ab78; path=/; expires=Wed, 06
+        May 2020 00:48:53 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 2499e0ec-8850-41a5-9e84-18c7e1f56b98
+      - 87844eef-63d2-4e1f-b606-7e98f32363d5
       X-Runtime:
-      - '0.010153'
+      - '0.008825'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -225,10 +225,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:47 GMT
+  recorded_at: Sun, 06 May 2018 00:48:53 GMT
 - request:
     method: post
     uri: http://localhost:3001/api/v1/people/1@census/document_verifications
@@ -252,14 +252,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=6e1be693-8219-4855-8101-9be72a5c9393; path=/; expires=Sat, 05 May
-        2018 20:55:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=bedf74dc-b0c6-43d9-95e7-b5d52cb61392; path=/; expires=Tue, 05
-        May 2020 16:55:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=9ec97e58-0114-4e6b-ac87-4ab3926cade5; path=/; expires=Sun, 06 May
+        2018 04:48:53 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=d1b86c97-71f9-4ea9-8928-9d218d25aaeb; path=/; expires=Wed, 06
+        May 2020 00:48:53 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - '01593ecc-a922-430b-9d59-69e44312cbc8'
+      - 652e7336-49fb-47ee-b459-845bff9e7109
       X-Runtime:
-      - '0.246624'
+      - '0.308739'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -283,7 +283,7 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:47 GMT
+  recorded_at: Sun, 06 May 2018 00:48:54 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -305,18 +305,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0797c73c4c6e86a4231b6782a48accb7"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=99d03934-7af4-4876-8f54-af47c12df67e; path=/; expires=Sat, 05 May
-        2018 20:55:47 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=99a4e3fd-7344-4250-ae59-9a07aa53c934; path=/; expires=Tue, 05
-        May 2020 16:55:47 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=dcf06a08-1298-45e9-9cc6-0863ef9311fd; path=/; expires=Sun, 06 May
+        2018 04:48:54 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=ad83c9b3-8004-4cf3-88fe-6a75769304ef; path=/; expires=Wed, 06
+        May 2020 00:48:54 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 2be95d26-e1ec-4379-a73e-4e4d9c9f16c6
+      - a24a7043-0983-4dbd-95bc-d584cb124d24
       X-Runtime:
-      - '0.007996'
+      - '0.010043'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -338,10 +338,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:47 GMT
+  recorded_at: Sun, 06 May 2018 00:48:54 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -363,18 +363,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0797c73c4c6e86a4231b6782a48accb7"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=92dcd13e-e1ae-4ee8-b1eb-4a6a59290017; path=/; expires=Sat, 05 May
-        2018 20:55:48 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=70c87ebb-aaaa-414e-81bf-a85d05fea13a; path=/; expires=Tue, 05
-        May 2020 16:55:48 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=c1961540-1a29-4707-8312-97883a0bcd1c; path=/; expires=Sun, 06 May
+        2018 04:48:54 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=9da2d2e2-b8b0-49aa-9bf2-651c6d2eff8b; path=/; expires=Wed, 06
+        May 2020 00:48:54 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 1e44f19e-c0a0-4baf-9964-7b759753a72d
+      - 18543b7e-6e46-4453-854a-7b9332ef2375
       X-Runtime:
-      - '0.007121'
+      - '0.011186'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -396,10 +396,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:48 GMT
+  recorded_at: Sun, 06 May 2018 00:48:54 GMT
 - request:
     method: post
     uri: http://localhost:3001/api/v1/people/1@census/membership_levels
@@ -421,14 +421,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - ahoy_visit=0f46b1c7-c387-4188-89d3-22e5cae1cc1f; path=/; expires=Sat, 05 May
-        2018 20:55:48 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=c405c2c7-943e-4a1c-bf74-4dbac92be4ff; path=/; expires=Tue, 05
-        May 2020 16:55:48 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=3d30edc6-6e50-4b2d-9bc6-245c7d9f56ba; path=/; expires=Sun, 06 May
+        2018 04:48:54 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=58c52326-86c7-465f-b950-33172040dac7; path=/; expires=Wed, 06
+        May 2020 00:48:54 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - b46170d5-bb7f-4b46-930c-7a554c31636d
+      - 845685be-1179-412b-9b54-9eff3de79e05
       X-Runtime:
-      - '0.012026'
+      - '0.015967'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -450,7 +450,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:48 GMT
+  recorded_at: Sun, 06 May 2018 00:48:54 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -472,18 +472,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0797c73c4c6e86a4231b6782a48accb7"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=4c13f958-6041-486f-b240-57353698b10f; path=/; expires=Sat, 05 May
-        2018 20:55:48 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=a762278a-17b8-4eb3-82ff-1b479b27c4e9; path=/; expires=Tue, 05
-        May 2020 16:55:48 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=706b46ac-386b-47b1-bd25-b8d378b8e665; path=/; expires=Sun, 06 May
+        2018 04:48:54 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=8d009919-2b81-45b8-a25d-a52fc1f5d481; path=/; expires=Wed, 06
+        May 2020 00:48:54 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - 570f00a1-7625-4ac6-af31-710e667ecf9a
+      - 74e7f755-3218-4a24-8f9b-92c38a20bc23
       X-Runtime:
-      - '0.008125'
+      - '0.012523'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -505,10 +505,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:48 GMT
+  recorded_at: Sun, 06 May 2018 00:48:54 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -530,18 +530,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0797c73c4c6e86a4231b6782a48accb7"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=877ac3c3-3331-401d-beec-7aa63a9717ba; path=/; expires=Sat, 05 May
-        2018 20:55:48 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=079fc0c7-02a4-4a18-9c12-5524cd400e79; path=/; expires=Tue, 05
-        May 2020 16:55:48 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=5f1f4d0f-20c1-4a08-8055-184c2417c33e; path=/; expires=Sun, 06 May
+        2018 04:48:55 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=2e7b2a9d-0902-4c8e-9d25-e749458f9ba9; path=/; expires=Wed, 06
+        May 2020 00:48:55 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - e968bb58-89b6-4910-a22b-80929cce81e9
+      - d7ab32f0-2a3a-4174-8d1e-e4618a81ecb4
       X-Runtime:
-      - '0.007187'
+      - '0.008726'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -563,10 +563,10 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:48 GMT
+  recorded_at: Sun, 06 May 2018 00:48:55 GMT
 - request:
     method: get
     uri: http://localhost:3001/api/v1/people/1@census
@@ -588,18 +588,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0797c73c4c6e86a4231b6782a48accb7"
+      - W/"d950929e58f67814ccd562e7b27e4729"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - ahoy_visit=d3fcf5b3-7e6a-4927-97e1-5a1e7b1f5be6; path=/; expires=Sat, 05 May
-        2018 20:55:49 -0000; HttpOnly; SameSite=Lax
-      - ahoy_visitor=e197709d-c5fb-4c64-8ca1-7c760bc3a565; path=/; expires=Tue, 05
-        May 2020 16:55:49 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visit=37247833-f706-4f95-900f-d74a02d99682; path=/; expires=Sun, 06 May
+        2018 04:48:55 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=567eca7b-c89c-4144-9c1f-81d28bac1c3a; path=/; expires=Wed, 06
+        May 2020 00:48:55 -0000; HttpOnly; SameSite=Lax
       X-Request-Id:
-      - fb495055-2d78-44f9-b6e0-793e26cc493b
+      - a1c78f1a-984a-4448-ab17-fd1500b7ac28
       X-Runtime:
-      - '0.006370'
+      - '0.010175'
       Clear-Site-Data:
       - '"storage", "executionContexts"'
       Content-Security-Policy:
@@ -621,8 +621,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-05","gender":"female","address":"Rua
-        del Percebe, 1","postal_code":"08001","email":"user3@example.org","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"not_verified","id_at_decidim":null}'
+      string: '{"id":1,"first_name":"Peter","last_name1":"Lopez","last_name2":"","document_type":"dni","document_id":"71195206V","born_at":"2000-05-06","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"scammer@mailinator.com","phone":null,"membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"pending","verification":"not_verified","id_at_decidim":null}'
     http_version: 
-  recorded_at: Sat, 05 May 2018 16:55:49 GMT
+  recorded_at: Sun, 06 May 2018 00:48:55 GMT
 recorded_with: VCR 4.0.0

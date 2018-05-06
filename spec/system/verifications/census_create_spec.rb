@@ -117,6 +117,26 @@ describe "Census verification workflow", type: :system do
         )
       end
     end
+
+    context "and verification has issues in the census side" do
+      let(:user) { create(:user, :confirmed, organization: organization, email: "scammer@mailinator.com") }
+
+      let(:cassette) { "verification_with_issues" }
+
+      it "shows popup to require verification and shows it as pending" do
+        expect(page).to have_no_content(
+          "You need to be a least 18 years old and be registered with dni and nie."
+        ).and have_content(
+          'In order to perform this action, you need to be authorized with "Census", but your authorization is still in progress'
+        )
+
+        VCR.use_cassette(cassette) do
+          click_link 'Check your "Census" authorization progress'
+
+          expect(page).to have_content("Your registration with Podemos census is being validated")
+        end
+      end
+    end
   end
 
   private

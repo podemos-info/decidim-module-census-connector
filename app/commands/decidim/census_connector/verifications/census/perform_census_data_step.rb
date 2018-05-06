@@ -17,7 +17,11 @@ module Decidim
               ::Census::API::Person.update(handler.id, person_params)
             end
 
-            authorization.grant!
+            if person.enabled?
+              authorization.grant!
+            else
+              authorization.save!
+            end
 
             broadcast :ok
           end

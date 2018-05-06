@@ -7,6 +7,7 @@ module Decidim
       delegate :document_type, :document_id, to: :person_data
       delegate :address, :postal_code, to: :person_data
       delegate :membership_level, :gender, to: :person_data
+      delegate :state, to: :person_data
       delegate :id, to: :scope, prefix: true
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true
@@ -33,6 +34,14 @@ module Decidim
 
       def age
         @age ||= calculate_age
+      end
+
+      def enabled?
+        state == "enabled"
+      end
+
+      def pending?
+        state == "pending"
       end
 
       private
