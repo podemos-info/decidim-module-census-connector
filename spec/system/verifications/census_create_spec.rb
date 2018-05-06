@@ -54,8 +54,6 @@ describe "Census verification workflow", type: :system do
     let(:age) { 18 }
     let(:document_type) { "DNI" }
 
-    let(:cassette) { "regular_verification" }
-
     before do
       click_link 'Authorize with "Census"'
 
@@ -66,8 +64,12 @@ describe "Census verification workflow", type: :system do
       end
     end
 
-    it "grants access to foo" do
-      expect(page).to have_current_path(/foo/)
+    context "and everything alright" do
+      let(:cassette) { "regular_verification" }
+
+      it "grants access to foo" do
+        expect(page).to have_current_path(/foo/)
+      end
     end
 
     context "and too young" do
