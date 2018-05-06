@@ -11,7 +11,7 @@ module Decidim
           paths["db/migrate"] = nil
 
           routes do
-            resource :authorizations, only: [:index, :create, :update], as: :authorization
+            resource :authorizations, only: [:index, :create, :edit, :update], as: :authorization
 
             root to: "authorizations#index"
           end

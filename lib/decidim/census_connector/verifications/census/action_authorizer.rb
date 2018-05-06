@@ -17,7 +17,9 @@ module Decidim
 
             authorize_document_type
 
-            add_extra_explanation unless @status_code == :ok
+            authorize_state
+
+            add_extra_explanation unless [:ok, :pending].include?(@status_code)
 
             [@status_code, @data]
           end
@@ -48,19 +50,39 @@ module Decidim
           end
 
           def authorize_age
-            if authorizing_by_age? && age < minimum_age
-              @status_code = :unauthorized
+            return unless authorizing_by_age? && age < minimum_age
 
-              add_unmatched_field("age" => age)
-            end
+            add_authorization_error("age", age)
           end
 
           def authorize_document_type
-            if authorizing_by_document_type? && !allowed_document_types.include?(document_type)
-              @status_code = :unauthorized
+            return unless authorizing_by_document_type? && !allowed_document_types.include?(document_type)
 
-              add_unmatched_field("document_type" => document_type_label)
+            add_authorization_error("document_type", document_type_label)
+          end
+
+          def authorize_state
+            if @status_code == :unauthorized
+              # Due to current authorizations implementation details, pending
+              # authorizations are not "granted in DB", whereas unauthorized ones
+              # are. So we need to force the authorization to be granted in order
+              # for decidim UI to properly display authorization errors instead of
+              # a "pending authorization" modal. This is a hacky-not-good-enough
+              # solution we should iterate over
+              authorization.grant!
+            elsif person.enabled?
+              @status_code = :ok
+
+              authorization.grant!
+            else
+              authorization.update!(granted_at: nil)
             end
+          end
+
+          def add_authorization_error(field, error)
+            @status_code = :unauthorized
+
+            add_unmatched_field(field => error)
           end
 
           def add_extra_explanation
@@ -117,7 +139,7 @@ module Decidim
           end
 
           def person
-            PersonProxy.new(authorization.metadata["person_id"]).person
+            @person ||= PersonProxy.new(authorization.metadata["person_id"]).person
           end
         end
       end

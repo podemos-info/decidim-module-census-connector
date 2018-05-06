@@ -11,7 +11,7 @@ describe "Census verification workflow", type: :system do
 
   let!(:scope) { create(:scope, code: "ES", id: 1) }
 
-  let!(:user) { create(:user, :confirmed, organization: organization) }
+  let(:user) { create(:user, :confirmed, organization: organization) }
 
   let(:birth_date) { age.years.ago.strftime("%Y-%b-%-d") }
 
@@ -54,8 +54,6 @@ describe "Census verification workflow", type: :system do
     let(:age) { 18 }
     let(:document_type) { "DNI" }
 
-    let(:cassette) { "regular_verification" }
-
     before do
       click_link 'Authorize with "Census"'
 
@@ -66,11 +64,15 @@ describe "Census verification workflow", type: :system do
       end
     end
 
-    it "grants access to foo" do
-      expect(page).to have_current_path(/foo/)
+    context "and everything alright" do
+      let(:cassette) { "regular_verification" }
+
+      it "grants access to foo" do
+        expect(page).to have_current_path(/foo/)
+      end
     end
 
-    context "when too young" do
+    context "and too young" do
       let(:age) { 17 }
 
       let(:cassette) { "child_verification" }
@@ -84,7 +86,7 @@ describe "Census verification workflow", type: :system do
       end
     end
 
-    context "when using passport" do
+    context "and using passport" do
       let(:document_type) { "Passport" }
 
       let(:cassette) { "verification_with_passport" }
@@ -98,7 +100,7 @@ describe "Census verification workflow", type: :system do
       end
     end
 
-    context "when too young and using passport" do
+    context "and too young using passport" do
       let(:age) { 17 }
 
       let(:document_type) { "Passport" }
@@ -113,6 +115,26 @@ describe "Census verification workflow", type: :system do
         ).and have_content(
           "Age value (#{age}) isn't valid."
         )
+      end
+    end
+
+    context "and verification has issues in the census side" do
+      let(:user) { create(:user, :confirmed, organization: organization, email: "scammer@mailinator.com") }
+
+      let(:cassette) { "verification_with_issues" }
+
+      it "shows popup to require verification and shows it as pending" do
+        expect(page).to have_no_content(
+          "You need to be a least 18 years old and be registered with dni and nie."
+        ).and have_content(
+          'In order to perform this action, you need to be authorized with "Census", but your authorization is still in progress'
+        )
+
+        VCR.use_cassette(cassette) do
+          click_link 'Check your "Census" authorization progress'
+
+          expect(page).to have_content("Your registration with Podemos census is being validated")
+        end
       end
     end
   end
