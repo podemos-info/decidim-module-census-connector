@@ -10,9 +10,9 @@ module Decidim
             if authorization.new_record?
               broadcast :invalid unless handler.valid?
 
-              handler.id = ::Census::API::Person.create(person_params)
+              person_id = ::Census::API::Person.create(person_params)
 
-              authorization.update!(metadata: { "person_id" => handler.id })
+              authorization.update!(metadata: { "person_id" => person_id })
             else
               ::Census::API::Person.update(handler.id, person_params)
             end
