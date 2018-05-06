@@ -1,3 +1,4 @@
+---
 en:
   activemodel:
     attributes:
@@ -6,8 +7,8 @@ en:
         address_scope_id: City
         born_at: Birth date
         document_number: Document number
-        document_type: Document type
         document_scope_id: Document country
+        document_type: Document type
         first_name: Name
         gender: Gender
         last_name1: First surname
@@ -26,8 +27,8 @@ en:
         gender:
           female: Female
           male: Male
-          undisclosed: Undisclosed
           other: Other
+          undisclosed: Undisclosed
         membership_level:
           activist: Activist
           follower: Follower
@@ -35,11 +36,15 @@ en:
           person: Person
   decidim:
     authorization_handlers:
+      admin:
+        census:
+          help:
+          - People registered at Podemos census
       census:
-        name: Census
         fields:
           age: Age
           document_type: Document type
+        name: Census
     census_connector:
       account:
         menu:
@@ -49,26 +54,29 @@ en:
           authorizations:
             data:
               title: Personal data
-            verification:
-              title: Identity verification
-              directions: "<ul><li>Click on the sample images to upload pictures of your document, so that we can verify your identity.</li>
-                <li>You can take pictures directly from your cell phone, making sure to fit the shape of the document into your screen. If you decide not to do it like that, notice that we only accept <strong>.jpg</strong> o <strong>.png</strong> formats.</li>
-                <li>If you have any trouble, you can get in touch with us by sending an email to <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
-              choose: Choose
-              sample1-description:
-                dni: "DNI anverse"
-                nie: "Anverse of your residence card. UE citizens: certificate of registration as EU citizen"
-                passport: "Main passport page"
-              sample2-description:
-                dni: "DNI reverse"
-                nie: "Reverso of your residence card. EU citizens: passport or national identity card"
-                passport: "Additional passport page (optional)"
             membership_level:
               title: Membership level
+            verification:
+              choose: Choose
+              directions: "<ul><li>Click on the sample images to upload pictures of your document, so that we can verify your identity.</li> <li>You can take pictures directly from your cell phone, making sure to fit the shape of the document into your screen. If you decide not to do it like that, notice that we only accept <strong>.jpg</strong> o <strong>.png</strong> formats.</li> <li>If you have any trouble, you can get in touch with us by sending an email to <a href='mailto:verificaciones@soporte.podemos.info'>verificaciones@soporte.podemos.info</a>.</li></ul>"
+              sample1-description:
+                dni: DNI anverse
+                nie: 'Anverse of your residence card. UE citizens: certificate of registration as EU citizen'
+                passport: Main passport page
+              sample2-description:
+                dni: DNI reverse
+                nie: 'Reverso of your residence card. EU citizens: passport or national identity card'
+                passport: Additional passport page (optional)
+              title: Identity verification
           errors:
             age_under_minimum_age: You should be older than %{minimum_age} years old to register
             create: Error when saving
-          extra_explanation_document_type: You need to be registered with %{allowed_documents}.
           extra_explanation_age: You need to be a least %{minimum_age} years old.
           extra_explanation_age_and_document_type: You need to be a least %{minimum_age} years old and be registered with %{allowed_documents}.
+          extra_explanation_document_type: You need to be registered with %{allowed_documents}.
           or: or
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            census: Get verified with Podemos census to get full access to the platform
