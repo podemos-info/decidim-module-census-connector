@@ -62,9 +62,15 @@ module Decidim
           end
 
           def authorize_state
-            return unless @status_code == :pending
-
-            if person.enabled?
+            if @status_code == :unauthorized
+              # Due to current authorizations implementation details, pending
+              # authorizations are not "granted in DB", whereas unauthorized ones
+              # are. So we need to force the authorization to be granted in order
+              # for decidim UI to properly display authorization errors instead of
+              # a "pending authorization" modal. This is a hacky-not-good-enough
+              # solution we should iterate over
+              authorization.grant!
+            elsif person.enabled?
               @status_code = :ok
 
               authorization.grant!
@@ -74,14 +80,6 @@ module Decidim
           end
 
           def add_authorization_error(field, error)
-            # Due to current authorizations implementation details, pending
-            # authorizations are not "granted in DB", whereas unauthorized ones
-            # are. So we need to force the authorization to be granted in order
-            # for decidim UI to properly display authorization errors instead of
-            # a "pending authorization" modal. This is a hacky-not-good-enough
-            # solution we should iterate over
-            authorization.grant!
-
             @status_code = :unauthorized
 
             add_unmatched_field(field => error)
