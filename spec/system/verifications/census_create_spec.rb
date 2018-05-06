@@ -70,7 +70,7 @@ describe "Census verification workflow", type: :system do
       expect(page).to have_current_path(/foo/)
     end
 
-    context "when too young" do
+    context "and too young" do
       let(:age) { 17 }
 
       let(:cassette) { "child_verification" }
@@ -84,7 +84,7 @@ describe "Census verification workflow", type: :system do
       end
     end
 
-    context "when using passport" do
+    context "and using passport" do
       let(:document_type) { "Passport" }
 
       let(:cassette) { "verification_with_passport" }
@@ -98,7 +98,7 @@ describe "Census verification workflow", type: :system do
       end
     end
 
-    context "when too young and using passport" do
+    context "and too young using passport" do
       let(:age) { 17 }
 
       let(:document_type) { "Passport" }
