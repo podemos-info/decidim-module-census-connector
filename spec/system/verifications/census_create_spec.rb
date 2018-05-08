@@ -19,9 +19,9 @@ describe "Census verification workflow", type: :system do
     create(:participatory_process, organization: organization)
   end
 
-  let(:feature) do
+  let(:component) do
     create(
-      :feature,
+      :component,
       participatory_space: participatory_space,
       permissions: {
         "foo" => {
@@ -35,7 +35,7 @@ describe "Census verification workflow", type: :system do
     )
   end
 
-  let(:dummy_resource) { create(:dummy_resource, feature: feature) }
+  let(:dummy_resource) { create(:dummy_resource, component: component) }
 
   before do
     switch_to_host(organization.host)
