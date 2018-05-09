@@ -24,12 +24,16 @@ module Decidim
 
           def person_params
             attributes.except(:document_scope_id, :scope_id, :address_scope_id).merge(
-              extra: { participa_id: handler.user.id },
+              external_id_field => handler.user.id,
               email: handler.user.email,
               document_scope_code: handler.document_scope&.code,
               scope_code: handler.scope&.code,
               address_scope_code: handler.address_scope&.code
             )
+          end
+
+          def external_id_field
+            :"id_at_#{Decidim::CensusConnector.system_identifier}"
           end
         end
       end
