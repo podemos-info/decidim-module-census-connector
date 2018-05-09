@@ -35,21 +35,21 @@ module Census
       end
 
       # PUBLIC update the given person with the given params.
-      def self.update(person_id, params)
+      def self.update(qualified_id, params)
         send_request do
-          patch("/api/v1/people/#{person_id}@census", body: params)
+          patch("/api/v1/people/#{qualified_id}", body: params)
         end
       end
 
       # PUBLIC retrieve the available information for the given person.
-      def self.find(person_id)
+      def self.find(qualified_id)
         send_request do
-          get("/api/v1/people/#{person_id}@census")
+          get("/api/v1/people/#{qualified_id}")
         end
       end
 
       # PUBLIC add a verification process for the given person.
-      def self.create_verification(person_id, params)
+      def self.create_verification(qualified_id, params)
         files = params[:files].map do |file|
           {
             filename: file.original_filename,
@@ -59,13 +59,13 @@ module Census
         end
 
         send_request do
-          post("/api/v1/people/#{person_id}@census/document_verifications", body: { files: files })
+          post("/api/v1/people/#{qualified_id}/document_verifications", body: { files: files })
         end
       end
 
-      def self.create_membership_level(person_id, params)
+      def self.create_membership_level(qualified_id, params)
         send_request do
-          post("/api/v1/people/#{person_id}@census/membership_levels", body: params)
+          post("/api/v1/people/#{qualified_id}/membership_levels", body: params)
         end
       end
     end

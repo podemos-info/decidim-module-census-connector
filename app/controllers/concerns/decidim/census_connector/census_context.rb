@@ -59,6 +59,10 @@ module Decidim
           end
         end
 
+        def qualified_id
+          @qualified_id ||= "#{current_user.id}@#{Decidim::CensusConnector.system_identifier}"
+        end
+
         def person_id
           @person_id ||= census_authorization.metadata["person_id"]
         end
@@ -70,7 +74,7 @@ module Decidim
         def person
           return nil unless has_person?
 
-          @person ||= PersonProxy.new(person_id).person
+          @person ||= PersonProxy.new(qualified_id).person
         end
       end
     end
