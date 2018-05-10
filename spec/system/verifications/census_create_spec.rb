@@ -17,6 +17,8 @@ describe "Census verification workflow", type: :system do
 
   let(:birth_date) { age.years.ago.strftime("%Y-%b-%-d") }
 
+  let(:random_seed) { rand(10_000_000) }
+
   let(:participatory_space) do
     create(:participatory_process, organization: organization)
   end
@@ -40,6 +42,8 @@ describe "Census verification workflow", type: :system do
   let(:dummy_resource) { create(:dummy_resource, component: component) }
 
   before do
+    Faker::Config.random = Random.new(random_seed) # Random data should be deterministic to reuse vcr cassettes
+
     switch_to_host(organization.host)
     login_as user, scope: :user
     visit resource_locator(dummy_resource).path
@@ -53,8 +57,10 @@ describe "Census verification workflow", type: :system do
   end
 
   context "when registering with census" do
+    let(:user) { create(:user, :confirmed, organization: organization, id: Faker::Number.number(7)) }
     let(:age) { 18 }
     let(:document_type) { "DNI" }
+    let(:random_seed) { "#{age}#{document_type}".to_i(36) }
 
     before do
       click_link 'Authorize with "Census"'
@@ -75,7 +81,7 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and too young" do
-      let(:age) { 17 }
+      let(:age) { 14 }
 
       let(:cassette) { "child_verification" }
 
@@ -103,7 +109,7 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and too young using passport" do
-      let(:age) { 17 }
+      let(:age) { 14 }
 
       let(:document_type) { "Passport" }
 
@@ -121,7 +127,7 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and verification has issues in the census side" do
-      let(:user) { create(:user, :confirmed, organization: organization, email: "scammer@mailinator.com") }
+      let(:user) { create(:user, :confirmed, organization: organization, email: "scammer@mailinator.com", id: Faker::Number.number(7)) }
 
       let(:cassette) { "verification_with_issues" }
 

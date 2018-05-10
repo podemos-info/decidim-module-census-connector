@@ -139,7 +139,7 @@ module Decidim
           end
 
           def person
-            @person ||= PersonProxy.new(authorization.metadata["person_id"]).person
+            @person ||= PersonProxy.new(Decidim::CensusConnector.qualified_id(authorization.user)).person
           end
         end
       end

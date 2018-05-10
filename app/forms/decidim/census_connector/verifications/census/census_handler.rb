@@ -14,7 +14,7 @@ module Decidim
           end
 
           def id
-            qualified_id || @id
+            Decidim::CensusConnector.qualified_id(user)
           end
 
           def metadata

@@ -30,7 +30,7 @@ module Decidim
           protected
 
           def attributes
-            handler.attributes.except(:person_id, :user, :handler_name)
+            handler.attributes.except(:user, :handler_name)
           end
 
           private

@@ -60,7 +60,7 @@ module Decidim
         end
 
         def qualified_id
-          @qualified_id ||= "#{current_user.id}@#{Decidim::CensusConnector.system_identifier}"
+          @qualified_id ||= Decidim::CensusConnector.qualified_id(current_user)
         end
 
         def person_id

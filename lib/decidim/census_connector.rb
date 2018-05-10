@@ -43,5 +43,9 @@ module Decidim
     config_accessor :census_api_debug do
       false
     end
+
+    def self.qualified_id(user)
+      "#{user.id}@#{system_identifier}"
+    end
   end
 end
