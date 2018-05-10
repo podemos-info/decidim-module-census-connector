@@ -3,6 +3,8 @@
 require "spec_helper"
 
 require "decidim/core/test/factories"
+require "faker"
+require "faker/spanish_document"
 
 describe "Census verification workflow", type: :system do
   let!(:organization) do
@@ -148,12 +150,12 @@ describe "Census verification workflow", type: :system do
   end
 
   def complete_data_step
-    fill_in "Name", with: "Peter"
-    fill_in "First surname", with: "Lopez"
+    fill_in "Name", with: Faker::Name.first_name
+    fill_in "First surname", with: Faker::Name.last_name
 
     select document_type, from: "Document type"
 
-    fill_in "Document", with: document_type == "DNI" ? "71195206V" : "R7232537748"
+    fill_in "Document", with: Faker::SpanishDocument.generate(document_type.downcase.to_sym)
 
     choose "Female"
 
