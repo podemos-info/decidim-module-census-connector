@@ -30,8 +30,6 @@ describe "Census verification workflow", type: :system do
 
   let(:birth_date) { age.years.ago.strftime("%Y-%b-%-d") }
 
-  let(:random_seed) { rand(10_000_000) }
-
   let(:participatory_space) do
     create(:participatory_process, organization: organization)
   end
@@ -54,8 +52,8 @@ describe "Census verification workflow", type: :system do
 
   let(:dummy_resource) { create(:dummy_resource, component: component) }
 
-  before do
-    Faker::Config.random = Random.new(random_seed) # Random data should be deterministic to reuse vcr cassettes
+  before do |example|
+    Faker::Config.random = Random.new(XXhash.xxh32(example.full_description, 0)) # Random data should be deterministic to reuse vcr cassettes
 
     switch_to_host(organization.host)
     login_as user, scope: :user
@@ -84,7 +82,6 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and everything alright" do
-      let(:random_seed) { 10_000_001 }
       let(:cassette) { "regular_verification" }
 
       it "grants access to foo" do
@@ -95,7 +92,6 @@ describe "Census verification workflow", type: :system do
     context "and too young" do
       let(:age) { 14 }
 
-      let(:random_seed) { 10_000_002 }
       let(:cassette) { "child_verification" }
 
       it "shows popup to require verification" do
@@ -110,7 +106,6 @@ describe "Census verification workflow", type: :system do
     context "and using passport" do
       let(:document_type) { "Passport" }
 
-      let(:random_seed) { 10_000_003 }
       let(:cassette) { "verification_with_passport" }
 
       it "shows popup to require verification" do
@@ -127,7 +122,6 @@ describe "Census verification workflow", type: :system do
 
       let(:document_type) { "Passport" }
 
-      let(:random_seed) { 10_000_004 }
       let(:cassette) { "child_verification_with_passport" }
 
       it "shows popup to require verification" do
@@ -142,12 +136,10 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and verification has issues in the census side" do
-
       let(:extra_user_params) do
         { email: "scammer@mailinator.com" }
       end
 
-      let(:random_seed) { 10_000_005 }
       let(:cassette) { "verification_with_issues" }
 
       it "shows popup to require verification and shows it as pending" do

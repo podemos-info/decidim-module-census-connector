@@ -14,6 +14,7 @@ group :development, :test do
   gem "byebug", "~> 10.0", platform: :mri
 
   gem "decidim-dev", "0.11.0.pre1"
+  gem "xxhash"
 end
 
 group :development do

@@ -654,6 +654,7 @@ GEM
     wisper-rspec (1.0.1)
     xpath (3.0.0)
       nokogiri (~> 1.8)
+    xxhash (0.4.0)
 
 PLATFORMS
   ruby
@@ -673,6 +674,7 @@ DEPENDENCIES
   uglifier (~> 4.1)
   vcr (~> 4.0)
   web-console (~> 3.5)
+  xxhash
 
 RUBY VERSION
    ruby 2.5.1p57
