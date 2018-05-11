@@ -13,7 +13,20 @@ describe "Census verification workflow", type: :system do
 
   let!(:scope) { create(:scope, code: "ES", id: 1) }
 
-  let(:user) { create(:user, :confirmed, organization: organization) }
+  let(:user) do
+    create(:user, :confirmed, base_user_params.merge(extra_user_params))
+  end
+
+  let(:base_user_params) do
+    {
+      organization: organization,
+      id: Faker::Number.number(7)
+    }
+  end
+
+  let(:extra_user_params) do
+    {}
+  end
 
   let(:birth_date) { age.years.ago.strftime("%Y-%b-%-d") }
 
@@ -57,7 +70,6 @@ describe "Census verification workflow", type: :system do
   end
 
   context "when registering with census" do
-    let(:user) { create(:user, :confirmed, organization: organization, id: Faker::Number.number(7)) }
     let(:age) { 18 }
     let(:document_type) { "DNI" }
     let(:random_seed) { "#{age}#{document_type}".to_i(36) }
@@ -127,7 +139,11 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and verification has issues in the census side" do
-      let(:user) { create(:user, :confirmed, organization: organization, email: "scammer@mailinator.com", id: Faker::Number.number(7)) }
+      let(:random_seed) { 10_000_001 }
+
+      let(:extra_user_params) do
+        { email: "scammer@mailinator.com" }
+      end
 
       let(:cassette) { "verification_with_issues" }
 
