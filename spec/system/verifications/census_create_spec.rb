@@ -72,7 +72,6 @@ describe "Census verification workflow", type: :system do
   context "when registering with census" do
     let(:age) { 18 }
     let(:document_type) { "DNI" }
-    let(:random_seed) { "#{age}#{document_type}".to_i(36) }
 
     before do
       click_link 'Authorize with "Census"'
@@ -85,6 +84,7 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and everything alright" do
+      let(:random_seed) { 10_000_001 }
       let(:cassette) { "regular_verification" }
 
       it "grants access to foo" do
@@ -95,6 +95,7 @@ describe "Census verification workflow", type: :system do
     context "and too young" do
       let(:age) { 14 }
 
+      let(:random_seed) { 10_000_002 }
       let(:cassette) { "child_verification" }
 
       it "shows popup to require verification" do
@@ -109,6 +110,7 @@ describe "Census verification workflow", type: :system do
     context "and using passport" do
       let(:document_type) { "Passport" }
 
+      let(:random_seed) { 10_000_003 }
       let(:cassette) { "verification_with_passport" }
 
       it "shows popup to require verification" do
@@ -125,6 +127,7 @@ describe "Census verification workflow", type: :system do
 
       let(:document_type) { "Passport" }
 
+      let(:random_seed) { 10_000_004 }
       let(:cassette) { "child_verification_with_passport" }
 
       it "shows popup to require verification" do
@@ -139,12 +142,12 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and verification has issues in the census side" do
-      let(:random_seed) { 10_000_001 }
 
       let(:extra_user_params) do
         { email: "scammer@mailinator.com" }
       end
 
+      let(:random_seed) { 10_000_005 }
       let(:cassette) { "verification_with_issues" }
 
       it "shows popup to require verification and shows it as pending" do
