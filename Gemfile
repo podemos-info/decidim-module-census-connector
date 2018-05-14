@@ -14,10 +14,12 @@ group :development, :test do
   gem "byebug", "~> 10.0", platform: :mri
 
   gem "decidim-dev", "0.11.0.pre1"
+  gem "xxhash"
 end
 
 group :development do
   gem "faker", "~> 1.8"
+  gem "faker-spanish_document", "~> 0.1"
   gem "letter_opener_web", "~> 1.3"
   gem "listen", "~> 3.1"
   gem "spring", "~> 2.0"

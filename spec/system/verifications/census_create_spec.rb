@@ -3,6 +3,8 @@
 require "spec_helper"
 
 require "decidim/core/test/factories"
+require "faker"
+require "faker/spanish_document"
 
 describe "Census verification workflow", type: :system do
   let!(:organization) do
@@ -11,7 +13,20 @@ describe "Census verification workflow", type: :system do
 
   let!(:scope) { create(:scope, code: "ES", id: 1) }
 
-  let(:user) { create(:user, :confirmed, organization: organization) }
+  let(:user) do
+    create(:user, :confirmed, base_user_params.merge(extra_user_params))
+  end
+
+  let(:base_user_params) do
+    {
+      organization: organization,
+      id: Faker::Number.number(7)
+    }
+  end
+
+  let(:extra_user_params) do
+    {}
+  end
 
   let(:birth_date) { age.years.ago.strftime("%Y-%b-%-d") }
 
@@ -37,7 +52,9 @@ describe "Census verification workflow", type: :system do
 
   let(:dummy_resource) { create(:dummy_resource, component: component) }
 
-  before do
+  before do |example|
+    Faker::Config.random = Random.new(XXhash.xxh32(example.full_description, 0)) # Random data should be deterministic to reuse vcr cassettes
+
     switch_to_host(organization.host)
     login_as user, scope: :user
     visit resource_locator(dummy_resource).path
@@ -73,7 +90,7 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and too young" do
-      let(:age) { 17 }
+      let(:age) { 14 }
 
       let(:cassette) { "child_verification" }
 
@@ -101,7 +118,7 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and too young using passport" do
-      let(:age) { 17 }
+      let(:age) { 14 }
 
       let(:document_type) { "Passport" }
 
@@ -119,7 +136,9 @@ describe "Census verification workflow", type: :system do
     end
 
     context "and verification has issues in the census side" do
-      let(:user) { create(:user, :confirmed, organization: organization, email: "scammer@mailinator.com") }
+      let(:extra_user_params) do
+        { email: "scammer@mailinator.com" }
+      end
 
       let(:cassette) { "verification_with_issues" }
 
@@ -148,12 +167,12 @@ describe "Census verification workflow", type: :system do
   end
 
   def complete_data_step
-    fill_in "Name", with: "Peter"
-    fill_in "First surname", with: "Lopez"
+    fill_in "Name", with: Faker::Name.first_name
+    fill_in "First surname", with: Faker::Name.last_name
 
     select document_type, from: "Document type"
 
-    fill_in "Document", with: document_type == "DNI" ? "71195206V" : "R7232537748"
+    fill_in "Document", with: Faker::SpanishDocument.generate(document_type.downcase.to_sym)
 
     choose "Female"
 

@@ -50,27 +50,12 @@ module Decidim
           end.compact
         end
 
-        def census_authorization
-          @census_authorization ||= Decidim::Authorization.find_or_initialize_by(
-            user: current_user,
-            name: "census"
-          ) do |authorization|
-            authorization.metadata = {}
-          end
-        end
+        delegate :census_authorization, :person_id, :has_person?, :person, :census_qualified_id, :local_qualified_id, to: :person_proxy
 
-        def person_id
-          @person_id ||= census_authorization.metadata["person_id"]
-        end
+        private
 
-        def has_person?
-          person_id.present?
-        end
-
-        def person
-          return nil unless has_person?
-
-          @person ||= PersonProxy.new(person_id).person
+        def person_proxy
+          @person_proxy ||= Decidim::CensusConnector::PersonProxy.new(user: current_user)
         end
       end
     end

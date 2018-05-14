@@ -10,11 +10,11 @@ module Decidim
             if authorization.new_record?
               broadcast :invalid unless handler.valid?
 
-              person_id = ::Census::API::Person.create(person_params)
+              person_id = ::Census::API::Person.create(person_params.merge(origin_qualified_id: handler.local_qualified_id))
 
               authorization.update!(metadata: { "person_id" => person_id })
             else
-              ::Census::API::Person.update(handler.id, person_params)
+              ::Census::API::Person.update(handler.census_qualified_id, person_params)
             end
 
             broadcast :ok
@@ -24,7 +24,6 @@ module Decidim
 
           def person_params
             attributes.except(:document_scope_id, :scope_id, :address_scope_id).merge(
-              extra: { participa_id: handler.user.id },
               email: handler.user.email,
               document_scope_code: handler.document_scope&.code,
               scope_code: handler.scope&.code,

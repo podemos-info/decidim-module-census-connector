@@ -8,7 +8,7 @@ jobs:
       - image: decidim/decidim@sha256:348fb1faa49cfe76ba7cbeafc67ca09002cf95f0ffa7a76eefa9d5b3774e0ee9
         environment:
           DATABASE_USERNAME: postgres
-          CENSUS_URL: http://localhost:3001
+          CENSUS_URL: http://mycensus:3001
 
       - image: postgres
         environment:
