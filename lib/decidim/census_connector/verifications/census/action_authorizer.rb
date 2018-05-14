@@ -120,14 +120,6 @@ module Decidim
             @data[:fields].merge!(field)
           end
 
-          def age
-            person.age
-          end
-
-          def document_type
-            person.document_type
-          end
-
           def document_type_label
             I18n.t(document_type, scope: "census.api.person.document_type")
           end
@@ -138,8 +130,10 @@ module Decidim
             @minimum_age&.to_i
           end
 
+          delegate :age, :document_type, to: :person
+
           def person
-            @person ||= PersonProxy.new(Decidim::CensusConnector.qualified_id(authorization.user)).person
+            @person ||= Decidim::CensusConnector::PersonProxy.new(authorization: authorization).person
           end
         end
       end
