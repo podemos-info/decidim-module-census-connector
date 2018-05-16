@@ -1,15 +1,32 @@
 # frozen_string_literal: true
 
+require "csv"
+
 module Decidim
   module CensusConnector
     module Seeds
-      def seed_scopes(organization, options = {})
-        Scopes.new.seed organization, options
-      end
-
       class Scopes
         EXTERIOR_SCOPE = "XX"
-        CACHE_PATH = Rails.root.join("tmp", "cache", "scopes.csv").freeze
+        CACHE_PATH = Rails.root.join("tmp", "cache", "#{Rails.env}_scopes.csv").freeze
+
+        class << self
+          def instance
+            @instance ||= Scopes.new
+          end
+
+          def seed(organization, options = {})
+            instance.seed organization, options
+          end
+
+          def cache_scopes
+            conn = ActiveRecord::Base.connection.raw_connection
+            File.open(CACHE_PATH, "w:ASCII-8BIT") do |file|
+              conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
+                while (row = conn.get_copy_data) do file.puts row end
+              end
+            end
+          end
+        end
 
         def seed(organization, options = {})
           @organization = organization
@@ -30,7 +47,7 @@ module Decidim
               Decidim::ScopeType.find_or_initialize_by(id: info[:id]).update!(info)
             end
             max_id = Decidim::ScopeType.maximum(:id)
-            Decidim::ScopeType.connection.execute("ALTER SEQUENCE decidim_scope_types_id_seq RESTART WITH #{max_id + 1}")
+            Decidim::ScopeType.connection.execute(ActiveRecord::Base.send(:sanitize_sql_array, ["ALTER SEQUENCE decidim_scope_types_id_seq RESTART WITH ?", max_id + 1]))
           end
 
           puts "Loading scopes..."
@@ -48,22 +65,13 @@ module Decidim
           print "\r"
         end
 
-        def self.cache_scopes
-          conn = ActiveRecord::Base.connection.raw_connection
-          File.open(Census::Seeds::Scopes::CACHE_PATH, "w:ASCII-8BIT") do |file|
-            conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
-              while (row = conn.get_copy_data) do file.puts row end
-            end
-          end
-        end
-
         private
 
         def load_cached_scopes
           return unless File.exist?(CACHE_PATH)
 
           conn = ActiveRecord::Base.connection.raw_connection
-          File.open(Census::Seeds::Scopes::CACHE_PATH, "r:ASCII-8BIT") do |file|
+          File.open(CACHE_PATH, "r:ASCII-8BIT") do |file|
             conn.copy_data "COPY decidim_scopes FROM STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
               conn.put_copy_data(file.readline) until file.eof?
             end
