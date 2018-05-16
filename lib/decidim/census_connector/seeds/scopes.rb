@@ -8,6 +8,9 @@ module Decidim
       end
 
       class Scopes
+        EXTERIOR_SCOPE = "XX"
+        CACHE_PATH = Rails.root.join("tmp", "cache", "scopes.csv").freeze
+
         def seed(organization, options = {})
           @organization = organization
 
@@ -31,6 +34,8 @@ module Decidim
           end
 
           puts "Loading scopes..."
+          return if load_cached_scopes
+
           @translations = Hash.new { |h, k| h[k] = {} }
           CSV.foreach(File.join(path, "scopes.translations.tsv"), col_sep: "\t", headers: true) do |row|
             @translations[row["UID"]][row["Locale"]] = row["Translation"]
@@ -43,7 +48,28 @@ module Decidim
           print "\r"
         end
 
+        def self.cache_scopes
+          conn = ActiveRecord::Base.connection.raw_connection
+          File.open(Census::Seeds::Scopes::CACHE_PATH, "w:ASCII-8BIT") do |file|
+            conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
+              while (row = conn.get_copy_data) do file.puts row end
+            end
+          end
+        end
+
         private
+
+        def load_cached_scopes
+          return unless File.exist?(CACHE_PATH)
+
+          conn = ActiveRecord::Base.connection.raw_connection
+          File.open(Census::Seeds::Scopes::CACHE_PATH, "r:ASCII-8BIT") do |file|
+            conn.copy_data "COPY decidim_scopes FROM STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
+              conn.put_copy_data(file.readline) until file.eof?
+            end
+          end
+          true
+        end
 
         def root_code(code)
           code.split(/\W/i).first
