@@ -28,3 +28,4 @@ exclude_patterns:
   - spec/decidim_dummy_app
   - spec/fixtures
   - coverage
+  - db/seeds
