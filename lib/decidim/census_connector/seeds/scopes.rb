@@ -30,7 +30,8 @@ module Decidim
 
         def seed(organization, options = {})
           @organization = organization
-          @path = File.join(options[:base_path], "scopes")
+          base_path = options[:base_path] || File.expand_path(File.join("..", "..", "..", "..", "db", "seeds"), __dir__)
+          @path = File.join(base_path, "scopes")
 
           save_scope_types
           save_scopes
