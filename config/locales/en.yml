@@ -30,10 +30,8 @@ en:
           other: Other
           undisclosed: Undisclosed
         membership_level:
-          activist: Activist
           follower: Follower
           member: Member
-          person: Person
   decidim:
     authorization_handlers:
       admin:
@@ -55,6 +53,11 @@ en:
             data:
               title: Personal data
             membership_level:
+              directions: Choose your membership level
+              follower:
+                description: To support Podemos activity.
+              member:
+                description: To participate in elections and consultations.
               title: Membership level
             verification:
               choose: Choose

@@ -32,3 +32,12 @@
     }
   }
 }
+ul.membership_levels {
+  margin-left: inherit;
+  li {
+    list-style: none;
+    label {
+      font-size: 2rem;
+    }
+  }
+}

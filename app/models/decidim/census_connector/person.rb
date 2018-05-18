@@ -36,12 +36,16 @@ module Decidim
         @age ||= calculate_age
       end
 
-      def enabled?
-        state == "enabled"
-      end
-
-      def pending?
-        state == "pending"
+      {
+        state: Census::API::Person::STATES,
+        verification: Census::API::Person::VERIFICATIONS,
+        membership_level: Census::API::Person::MEMBERSHIP_LEVELS
+      }.each do |attribute, values|
+        values.each do |value|
+          define_method "#{value}?" do
+            @person_data[attribute] == value
+          end
+        end
       end
 
       private

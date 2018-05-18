@@ -11,7 +11,7 @@ module Decidim
           helper Decidim::SanitizeHelper
 
           before_action :authorize
-          helper_method :current_step_path
+          helper_method :current_form_path
 
           STEPS = %w(data verification membership_level).freeze
 
@@ -22,12 +22,11 @@ module Decidim
               @handler = current_handler.new.with_context(form_context)
               @handler.use_default_values
             end
-            render current_step
+            render current_form
           end
 
           def create
-            @handler = current_handler.from_params(current_handler_params).with_context(form_context)
-
+            @handler = current_handler.from_params(params).with_context(form_context)
             current_command.call(census_authorization, @handler) do
               on(:ok) do
                 redirect_to next_path
@@ -35,7 +34,7 @@ module Decidim
 
               on(:invalid) do
                 flash.now[:alert] = t("errors.create", scope: "decidim.census_connector.verifications.census")
-                render current_step
+                render current_form
               end
             end
           end
@@ -54,44 +53,41 @@ module Decidim
             authorize! :manage, census_authorization
           end
 
+          def step?
+            @step ||= request[:form].blank?
+          end
+
           def current_step
-            @current_step ||= begin
-              step = request[:step]
-              if step && STEPS.member?(step) && person_id
-                step
-              else
-                STEPS.first
-              end
-            end
-          end
-
-          def current_handler
-            @current_handler ||= "decidim/census_connector/verifications/census/#{current_step}_handler".classify.constantize
-          end
-
-          def current_handler_params
-            current_handler.safe_params(params)
-          end
-
-          def current_command
-            @current_command ||= "decidim/census_connector/verifications/census/perform_census_#{current_step}_step".classify.constantize
+            @current_step ||= valid_step(request[:step])
           end
 
           def next_step
-            @next_step ||= STEPS[STEPS.index(current_step) + 1]
+            @next_step ||= step? && STEPS[STEPS.index(current_step) + 1]
+          end
+
+          def current_form
+            @current_form ||= step? ? current_step : valid_step(request[:form])
+          end
+
+          def current_handler
+            @current_handler ||= "decidim/census_connector/verifications/census/#{current_form}_handler".classify.constantize
+          end
+
+          def current_command
+            @current_command ||= "decidim/census_connector/verifications/census/perform_census_#{current_form}_step".classify.constantize
           end
 
           def next_path
             @next_path ||= if next_step
                              decidim_census.root_path(authorization_params.merge(step: next_step))
                            else
-                             authorization_params[:redirect_url] || decidim_verifications.authorizations_path(authorization_params.except(:step))
+                             authorization_params[:redirect_url] || decidim_census_account.root_path
                            end
           end
 
-          def current_step_path
-            @current_step_path ||= decidim_census.authorization_path(
-              authorization_params.merge(step: current_step)
+          def current_form_path
+            @current_form_path ||= decidim_census.authorization_path(
+              authorization_params
             )
           end
 
@@ -106,7 +102,15 @@ module Decidim
           end
 
           def authorization_params
-            params.permit(:locale, :step, :redirect_url).to_h
+            params.permit(:locale, :step, :form, :redirect_url).to_h
+          end
+
+          def valid_step(step)
+            if step && STEPS.member?(step) && person_id
+              step
+            else
+              STEPS.first
+            end
           end
         end
       end

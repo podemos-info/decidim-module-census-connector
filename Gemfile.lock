@@ -63,7 +63,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     better_html (1.0.10)
       actionview (>= 4.0)
       activesupport (>= 4.0)
@@ -348,7 +348,7 @@ GEM
     graphiql-rails (1.4.10)
       railties
       sprockets-rails
-    graphql (1.7.14)
+    graphql (1.8.0)
     hashdiff (0.3.7)
     hashie (3.5.7)
     high_voltage (3.1.0)

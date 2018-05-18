@@ -5,6 +5,8 @@ module Decidim
     module Verifications
       module Census
         class DataHandler < CensusHandler
+          mimic :data_handler
+
           def self.document_scopes
             @document_scopes ||= Decidim::Scope.top_level.order(name: :asc)
           end
@@ -33,18 +35,20 @@ module Decidim
           attribute :scope_id, Integer
           attribute :postal_code, String
 
-          validates :first_name, :last_name1, :born_at, :address, presence: true
-          validates :document_type, inclusion: { in: document_types.values }
-          validates :document_id, format: { with: /\A[A-z0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }, presence: true
-          validates :document_scope, presence: true, unless: :local_document?
-          validates :gender, inclusion: { in: genders.values }, presence: true
+          validates :first_name, :last_name1, :born_at, presence: true, unless: :verified?
+          validates :document_type, inclusion: { in: document_types.values }, unless: :verified?
+          validates :document_id, format: { with: /\A[A-z0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }, presence: true, unless: :verified?
+          validates :document_scope, presence: true, unless: -> { local_document? || verified? }
+          validates :gender, inclusion: { in: genders.values }, presence: true, unless: :verified?
           validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }
-          validates :scope, :address_scope_id, presence: true
+          validates :scope, :address, :address_scope_id, presence: true
 
           validate :over_min_age
 
           def use_default_values
             @document_type = self.class.document_types.values.first
+            @document_scope_id = local_scope.id
+            @document_scope = local_scope
           end
 
           def document_scope
@@ -75,9 +79,8 @@ module Decidim
             ::Census::API::Person.local_document? document_type
           end
 
-          def self.safe_params(params)
-            params.require(:data_handler).permit(:first_name, :last_name1, :last_name2, :document_type, :document_id, :document_scope_id, :born_at, :gender,
-                                                 :address, :address_scope_id, :scope_id, :postal_code)
+          def verified?
+            context.person&.verified?
           end
 
           private
