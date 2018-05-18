@@ -19,18 +19,16 @@ $(() => {
     const $addressScope = $("#data_handler_address_scope_id");
     if ($addressScope.length > 0) {
       const $scope = $("#scope_selector");
-      const $hidden = $("input[type=hidden]", $addressScope);
       const localScopeRanges = $addressScope.parent().data("localScopeRanges");
-      const toggleScope = () => {
-        const addressScopeId = $hidden.val();
-        if (localScopeRanges.some(range => range[0] <= addressScopeId && addressScopeId <= range[1])) {
+      const toggleScope = (addressScopeId) => {
+        if (addressScopeId == null || localScopeRanges.some(range => range[0] <= addressScopeId && addressScopeId <= range[1])) {
           $scope.hide();
         } else {
           $scope.show();
         }
       }
-      toggleScope();
-      $hidden.on('change', toggleScope);
+      toggleScope($("input[type=hidden]", $addressScope).val());
+      $addressScope.on("change", "input[type=hidden]", (event) => toggleScope($(event.target).val()));
     }
 
     const $documentUploader = $(".document_uploader input[type=file]");
