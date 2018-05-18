@@ -6,7 +6,9 @@ module Census
     class Person < CensusAPI
       DOCUMENT_TYPES = %w(dni nie passport).freeze
       GENDERS = %w(female male other undisclosed).freeze
-      MEMBERSHIP_LEVELS = %w(follower member activist).freeze
+      MEMBERSHIP_LEVELS = %w(follower member).freeze
+      STATES = %w(pending enabled cancelled trashed).freeze
+      VERIFICATIONS = %w(not_verified verification_requested verified mistake fraudulent).freeze
 
       def self.document_types
         @document_types ||= Hash[DOCUMENT_TYPES.map { |type| [I18n.t("census.api.person.document_type.#{type}"), type] }].freeze

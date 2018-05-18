@@ -30,16 +30,14 @@ es:
           other: Otro
           undisclosed: No contesta
         membership_level:
-          activist: Militante
           follower: Simpatizante
           member: Afiliado/a
-          person: Persona
   decidim:
     authorization_handlers:
       admin:
         census:
           help:
-          - Personas inscritas en el censo de podemos
+          - Personas inscritas en el censo de Podemos
       census:
         fields:
           age: Edad
@@ -55,6 +53,11 @@ es:
             data:
               title: Introduce tus datos personales
             membership_level:
+              directions: En Podemos hay diferentes maneras de participar y son todas útiles y bienvenidas. En este paso puedes elegir la que más se acerque a tu nivel de compromiso con Podemos.
+              follower:
+                description: Si te interesa Podemos y defiendes nuestras ideas en los parlamentos de la vida cotidiana y de las redes sociales.
+              member:
+                description: Si deseas participar en los procesos internos y las consultas.
               title: Elige tu nivel de compromiso
             verification:
               choose: Elegir
