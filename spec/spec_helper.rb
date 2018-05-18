@@ -9,3 +9,7 @@ Decidim::Dev.dummy_app_path = File.expand_path(File.join("spec", "decidim_dummy_
 require "decidim/dev/test/base_spec_helper"
 
 require "support/vcr"
+
+RSpec.configure do |config|
+  config.include Capybara::ScopesPicker, type: :system
+end

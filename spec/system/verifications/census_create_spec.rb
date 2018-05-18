@@ -11,7 +11,7 @@ describe "Census verification workflow", type: :system do
     create(:organization, available_authorizations: ["census"])
   end
 
-  let!(:scope) { create(:scope, code: "ES", id: 1) }
+  let!(:scope) { create(:scope, code: "ES", organization: organization, id: 1) }
 
   let(:user) do
     create(:user, :confirmed, base_user_params.merge(extra_user_params))
@@ -183,6 +183,7 @@ describe "Census verification workflow", type: :system do
     find(".datepicker-dropdown .month:not(.new):not(.old)", text: month, exact_text: true).click
     find(".datepicker-dropdown .day:not(.new):not(.old)", text: day, exact_text: true).click
 
+    scope_pick scopes_picker_find(:data_handler_address_scope_id), scope
     fill_in "Address", with: "Rua del Percebe, 1"
     fill_in "Postal code", with: "08001"
 
