@@ -39,7 +39,7 @@ module Decidim
           validates :document_scope, presence: true, unless: :local_document?
           validates :gender, inclusion: { in: genders.values }, presence: true
           validates :postal_code, presence: true, format: { with: /\A[0-9]*\z/, message: I18n.t("errors.messages.uppercase_only_letters_numbers") }
-          validates :scope_id, :address_scope_id, presence: true
+          validates :scope, :address_scope_id, presence: true
 
           validate :over_min_age
 
