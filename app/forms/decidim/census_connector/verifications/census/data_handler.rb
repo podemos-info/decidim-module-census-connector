@@ -44,8 +44,6 @@ module Decidim
           validate :over_min_age
 
           def use_default_values
-            @document_scope_id = @address_scope_id = @scope_id = local_scope.id
-            @document_scope = @address_scope = @scope = local_scope
             @document_type = self.class.document_types.values.first
           end
 
