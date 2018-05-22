@@ -16,6 +16,8 @@ module Census
         http_proxy Decidim::CensusConnector.census_api_proxy_address, Decidim::CensusConnector.census_api_proxy_port if Decidim::CensusConnector.census_api_proxy_address.present?
 
         debug_output if Decidim::CensusConnector.census_api_debug
+
+        delegate :send_request, :get, :patch, :post, to: :class
       end
 
       class_methods do

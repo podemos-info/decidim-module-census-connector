@@ -14,7 +14,7 @@ module Decidim
 
               authorization.update!(metadata: { "person_id" => person_id })
             else
-              ::Census::API::Person.update(handler.census_qualified_id, person_params)
+              person.update(person_params)
             end
 
             broadcast :ok

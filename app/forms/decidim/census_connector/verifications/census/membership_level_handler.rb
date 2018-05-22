@@ -10,7 +10,7 @@ module Decidim
           attribute :membership_level, Symbol
 
           def self.membership_levels
-            ::Census::API::Person.membership_levels
+            Person.membership_levels
           end
         end
       end

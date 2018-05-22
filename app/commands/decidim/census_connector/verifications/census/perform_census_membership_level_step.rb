@@ -14,7 +14,7 @@ module Decidim
           private
 
           def update_membership_level
-            ::Census::API::Person.create_membership_level(handler.census_qualified_id, membership_level_params)
+            person.create_membership_level(membership_level_params)
           end
 
           def membership_level_params

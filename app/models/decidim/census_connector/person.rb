@@ -12,6 +12,30 @@ module Decidim
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true
 
+      DOCUMENT_TYPES = %w(dni nie passport).freeze
+      GENDERS = %w(female male other undisclosed).freeze
+      MEMBERSHIP_LEVELS = %w(follower member).freeze
+      STATES = %w(pending enabled cancelled trashed).freeze
+      VERIFICATIONS = %w(not_verified verification_requested verified mistake fraudulent).freeze
+
+      def self.document_types
+        @document_types ||= Hash[DOCUMENT_TYPES.map { |type| [I18n.t("census.api.person.document_type.#{type}"), type] }].freeze
+      end
+
+      def self.genders
+        @genders ||= Hash[GENDERS.map { |gender| [I18n.t("census.api.person.gender.#{gender}"), gender] }].freeze
+      end
+
+      def self.membership_levels
+        @membership_levels ||= Hash[MEMBERSHIP_LEVELS.map do |membership_level|
+          [I18n.t("census.api.person.membership_level.#{membership_level}"), membership_level]
+        end].freeze
+      end
+
+      def self.local_document?(document_type)
+        document_type != "passport"
+      end
+
       def initialize(person_data)
         @person_data = OpenStruct.new(person_data)
       end
@@ -37,9 +61,9 @@ module Decidim
       end
 
       {
-        state: Census::API::Person::STATES,
-        verification: Census::API::Person::VERIFICATIONS,
-        membership_level: Census::API::Person::MEMBERSHIP_LEVELS
+        state: STATES,
+        verification: VERIFICATIONS,
+        membership_level: MEMBERSHIP_LEVELS
       }.each do |attribute, values|
         values.each do |value|
           define_method "#{value}?" do
