@@ -3,6 +3,8 @@
 module Decidim
   module CensusConnector
     class Person
+      include Census::API::Definitions
+
       delegate :first_name, :last_name1, :last_name2, to: :person_data
       delegate :document_type, :document_id, to: :person_data
       delegate :address, :postal_code, to: :person_data
@@ -11,30 +13,6 @@ module Decidim
       delegate :id, to: :scope, prefix: true
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true
-
-      DOCUMENT_TYPES = %w(dni nie passport).freeze
-      GENDERS = %w(female male other undisclosed).freeze
-      MEMBERSHIP_LEVELS = %w(follower member).freeze
-      STATES = %w(pending enabled cancelled trashed).freeze
-      VERIFICATIONS = %w(not_verified verification_requested verified mistake fraudulent).freeze
-
-      def self.document_types
-        @document_types ||= Hash[DOCUMENT_TYPES.map { |type| [I18n.t("census.api.person.document_type.#{type}"), type] }].freeze
-      end
-
-      def self.genders
-        @genders ||= Hash[GENDERS.map { |gender| [I18n.t("census.api.person.gender.#{gender}"), gender] }].freeze
-      end
-
-      def self.membership_levels
-        @membership_levels ||= Hash[MEMBERSHIP_LEVELS.map do |membership_level|
-          [I18n.t("census.api.person.membership_level.#{membership_level}"), membership_level]
-        end].freeze
-      end
-
-      def self.local_document?(document_type)
-        document_type != "passport"
-      end
 
       def initialize(person_data)
         @person_data = OpenStruct.new(person_data)
