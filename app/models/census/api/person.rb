@@ -38,17 +38,17 @@ module Census
         response[:person_id]
       end
 
-      # PUBLIC update the given person with the given params.
-      def self.update(qualified_id, params)
-        send_request do
-          patch("/api/v1/people/#{qualified_id}", body: params)
-        end
-      end
-
       # PUBLIC retrieve the available information for the given person.
       def self.find(qualified_id)
         send_request do
           get("/api/v1/people/#{qualified_id}")
+        end
+      end
+
+      # PUBLIC update the given person with the given params.
+      def self.update(qualified_id, params)
+        send_request do
+          patch("/api/v1/people/#{qualified_id}", body: params)
         end
       end
 
