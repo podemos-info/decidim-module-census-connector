@@ -3,7 +3,9 @@
 module Census
   module API
     # This class represents a person in Census
-    class Person < CensusAPI
+    class Person
+      include CensusAPI
+
       DOCUMENT_TYPES = %w(dni nie passport).freeze
       GENDERS = %w(female male other undisclosed).freeze
       MEMBERSHIP_LEVELS = %w(follower member).freeze
