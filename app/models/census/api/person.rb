@@ -28,7 +28,7 @@ module Census
         document_type != "passport"
       end
 
-      # PUBLIC creates the person with the given params.
+      # PUBLIC creates a person with the given params.
       def self.create(params)
         response = send_request do
           post("/api/v1/people", body: params)
