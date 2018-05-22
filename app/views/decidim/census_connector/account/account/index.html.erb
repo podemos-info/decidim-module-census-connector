@@ -2,7 +2,7 @@
   <% if person.pending? %>
     <div class="callout announcement secondary">
       <div class="row column">
-        Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
+        <%= t(".pending_notice") %>
       </div>
     </div>
   <% end %>
@@ -12,7 +12,7 @@
       <div class="card--list__text">
         <div>
           <h6 class="card--list__heading heading6">
-            Datos personales
+            <%= t(".data_heading") %>
           </h6>
           <span class="text-small"><%= person_presenter.full_name %></span><br/>
           <span class="text-small"><%= person_presenter.full_document %></span><br/>
@@ -37,7 +37,7 @@
       <div class="card--list__text">
         <div>
           <h6 class="card--list__heading heading6">
-            Ubicación
+            <%= t(".scope_heading") %>
           </h6>
           <span class="text-small"><%= person_presenter.full_address %></span><br/>
           <span class="text-small"><%= person_presenter.participation_scope %></span>
@@ -52,7 +52,7 @@
       <div class="card--list__text">
         <div>
           <h6 class="card--list__heading heading6">
-            Nivel de compromiso
+            <%= t(".membership_heading") %>
           </h6>
           <span class="text-small"><%= person_presenter.membership_level %></span>
         </div>
@@ -63,6 +63,6 @@
     </div>
   </div>
 <% else %>
-  <p>Aún no estás registrado en el censo de Podemos.<br/><a href="<%= decidim_census.root_path %>">Apúntate para participar en las votaciones.</a></p>
+  <p><%= t(".not_yet_registered") %><br/><a href="<%= decidim_census.root_path %>"><%= t(".sign_up_to_vote") %></a></p>
 <% end %>
 <%= stylesheet_link_tag "decidim/census_connector/account/account" %>

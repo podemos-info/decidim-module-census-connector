@@ -45,6 +45,14 @@ en:
         name: Census
     census_connector:
       account:
+        account:
+          index:
+            data_heading: Personal data
+            membership_heading: Membership level
+            not_yet_registered: You're not yet registered with Podemos' census.
+            pending_notice: Your registration with Podemos census is being validated. Try again at a later time or contact us at verificaciones@soporte.podemos.info
+            scope_heading: Location
+            sign_up_to_vote: Sign up to take part in votings.
         menu:
           census: Census
       verifications:
