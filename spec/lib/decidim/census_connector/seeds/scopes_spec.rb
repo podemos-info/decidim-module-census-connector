@@ -11,7 +11,7 @@ describe Decidim::CensusConnector::Seeds::Scopes do
     before { FileUtils.rm_rf(Decidim::CensusConnector::Seeds::Scopes::CACHE_PATH) }
 
     let(:organization) { create(:organization) }
-    let(:base_path) { File.expand_path("../../../../fixtures/seeds", __dir__) }
+    let(:base_path) { File.expand_path("../../../../fixtures/seeds/scopes", __dir__) }
     let(:instance) { described_class.instance }
 
     it "loads scopes data" do

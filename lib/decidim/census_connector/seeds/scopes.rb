@@ -14,11 +14,10 @@ module Decidim
         end
 
         def seed(options = {})
-          base_path = options[:base_path] || File.expand_path(File.join("..", "..", "..", "..", "db", "seeds"), __dir__)
-          @path = File.join(base_path, "scopes")
+          base_path = options[:base_path] || File.expand_path(File.join("..", "..", "..", "..", "db", "seeds", "scopes"), __dir__)
 
-          save_scope_types(File.join(@path, "scope_types.tsv"))
-          save_scopes(File.join(@path, "scopes.tsv"), File.join(@path, "scopes.translations.tsv"))
+          save_scope_types(File.join(base_path, "scope_types.tsv"))
+          save_scopes(File.join(base_path, "scopes.tsv"), File.join(base_path, "scopes.translations.tsv"))
         end
 
         private
