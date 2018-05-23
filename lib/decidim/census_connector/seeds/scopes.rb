@@ -15,13 +15,14 @@ module Decidim
 
         def seed(options = {})
           base_path = options[:base_path] || File.expand_path("../../../../db/seeds/scopes", __dir__)
+          cache_path = ENV["SCOPES_CACHE_PATH"].presence || CACHE_PATH
 
           puts "Loading scope types..."
           save_scope_types("#{base_path}/scope_types.tsv")
 
           puts "Loading scopes..."
-          if File.exist?(CACHE_PATH)
-            load_cached_scopes(CACHE_PATH)
+          if File.exist?(cache_path)
+            load_cached_scopes(cache_path)
           else
             load_original_scopes("#{base_path}/scopes.tsv", "#{base_path}/scopes.translations.tsv")
           end
