@@ -8,7 +8,7 @@ describe Decidim::CensusConnector::Seeds::Scopes do
   describe "#seed" do
     subject(:method) { described_class.seed organization, base_path: base_path }
 
-    before { FileUtils.rm_rf(Decidim::CensusConnector::Seeds::Scopes::CACHE_PATH) }
+    before { FileUtils.rm_rf(described_class::CACHE_PATH) }
 
     let(:organization) { create(:organization) }
     let(:base_path) { File.expand_path("../../../../fixtures/seeds/scopes", __dir__) }
