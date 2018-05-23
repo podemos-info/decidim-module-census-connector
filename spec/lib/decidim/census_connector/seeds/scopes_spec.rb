@@ -30,7 +30,7 @@ describe Decidim::CensusConnector::Seeds::Scopes do
     context "when data is cached" do
       before do
         described_class.seed organization, base_path: base_path
-        described_class.cache_scopes
+        described_class.cache_scopes(CACHE_PATH)
         Decidim::Scope.delete_all
       end
 

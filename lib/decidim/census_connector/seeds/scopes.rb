@@ -21,7 +21,7 @@ module Decidim
 
           puts "Loading scopes..."
           if File.exist?(CACHE_PATH)
-            load_cached_scopes
+            load_cached_scopes(CACHE_PATH)
           else
             load_original_scopes("#{base_path}/scopes.tsv", "#{base_path}/scopes.translations.tsv")
           end
@@ -59,18 +59,18 @@ module Decidim
           end
         end
 
-        def load_cached_scopes
+        def load_cached_scopes(source)
           conn = ActiveRecord::Base.connection.raw_connection
-          File.open(CACHE_PATH, "r:ASCII-8BIT") do |file|
+          File.open(source, "r:ASCII-8BIT") do |file|
             conn.copy_data "COPY decidim_scopes FROM STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
               conn.put_copy_data(file.readline) until file.eof?
             end
           end
         end
 
-        def cache_scopes
+        def cache_scopes(target)
           conn = ActiveRecord::Base.connection.raw_connection
-          File.open(CACHE_PATH, "w:ASCII-8BIT") do |file|
+          File.open(target, "w:ASCII-8BIT") do |file|
             conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
               while (row = conn.get_copy_data) do file.puts row end
             end
