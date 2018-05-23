@@ -50,7 +50,7 @@ module Decidim
           end.compact
         end
 
-        delegate :census_authorization, :person_id, :has_person?, :person, :census_qualified_id, :local_qualified_id, to: :person_proxy, allow_nil: true
+        delegate :census_authorization, :has_person?, :person, :census_qualified_id, :local_qualified_id, to: :person_proxy, allow_nil: true
 
         private
 

@@ -106,7 +106,7 @@ module Decidim
           end
 
           def valid_step(step)
-            if step && STEPS.member?(step) && person_id
+            if step && STEPS.member?(step) && has_person?
               step
             else
               STEPS.first
