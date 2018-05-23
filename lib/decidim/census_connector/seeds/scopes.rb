@@ -20,7 +20,11 @@ module Decidim
           save_scope_types("#{base_path}/scope_types.tsv")
 
           puts "Loading scopes..."
-          save_scopes("#{base_path}/scopes.tsv", "#{base_path}/scopes.translations.tsv")
+          if File.exist?(CACHE_PATH)
+            load_cached_scopes
+          else
+            load_original_scopes("#{base_path}/scopes.tsv", "#{base_path}/scopes.translations.tsv")
+          end
         end
 
         private
@@ -43,15 +47,7 @@ module Decidim
           end
         end
 
-        def save_scopes(main_source, translations_source)
-          if File.exist?(CACHE_PATH)
-            load_cached_scopes
-          else
-            load_original_scopes
-          end
-        end
-
-        def load_original_scopes
+        def load_original_scopes(main_source, translations_source)
           @translations = Hash.new { |h, k| h[k] = {} }
           CSV.foreach(translations_source, col_sep: "\t", headers: true) do |row|
             @translations[row["UID"]][row["Locale"]] = row["Translation"]
