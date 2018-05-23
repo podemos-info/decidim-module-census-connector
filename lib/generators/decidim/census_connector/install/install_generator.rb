@@ -10,7 +10,7 @@ module Decidim
         DESC
 
         def self.source_root
-          @source_root ||= File.expand_path(File.join(__dir__, "templates"))
+          @source_root ||= File.expand_path("templates", __dir__)
         end
 
         def copy_configuration
