@@ -16,14 +16,16 @@ module Decidim
         def seed(options = {})
           base_path = options[:base_path] || File.expand_path("../../../../db/seeds/scopes", __dir__)
 
+          puts "Loading scope types..."
           save_scope_types("#{base_path}/scope_types.tsv")
+
+          puts "Loading scopes..."
           save_scopes("#{base_path}/scopes.tsv", "#{base_path}/scopes.translations.tsv")
         end
 
         private
 
         def save_scope_types(source)
-          puts "Loading scope types..."
           @scope_types = Hash.new { |h, k| h[k] = Hash.new { |h2, k2| h2[k2] = {} } }
           CSV.foreach(source, col_sep: "\t", headers: true) do |row|
             @scope_types[row["Code"]][:id] = row["UID"]
@@ -42,8 +44,6 @@ module Decidim
         end
 
         def save_scopes(main_source, translations_source)
-          puts "Loading scopes..."
-
           if File.exist?(CACHE_PATH)
             load_cached_scopes
           else
