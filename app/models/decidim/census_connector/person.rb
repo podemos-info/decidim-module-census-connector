@@ -3,6 +3,8 @@
 module Decidim
   module CensusConnector
     class Person
+      include Census::API::Definitions
+
       delegate :first_name, :last_name1, :last_name2, to: :person_data
       delegate :document_type, :document_id, to: :person_data
       delegate :address, :postal_code, to: :person_data
@@ -37,9 +39,9 @@ module Decidim
       end
 
       {
-        state: Census::API::Person::STATES,
-        verification: Census::API::Person::VERIFICATIONS,
-        membership_level: Census::API::Person::MEMBERSHIP_LEVELS
+        state: STATES,
+        verification: VERIFICATIONS,
+        membership_level: MEMBERSHIP_LEVELS
       }.each do |attribute, values|
         values.each do |value|
           define_method "#{value}?" do

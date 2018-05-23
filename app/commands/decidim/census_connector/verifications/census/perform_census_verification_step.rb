@@ -14,7 +14,7 @@ module Decidim
           private
 
           def create_verification
-            ::Census::API::Person.create_verification(handler.census_qualified_id, verification_params)
+            person.create_verification(verification_params)
           end
 
           def verification_params

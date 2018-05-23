@@ -27,13 +27,15 @@ module Decidim
             perform
           end
 
-          protected
+          private
+
+          def person
+            @person ||= ::Census::API::Person.new(handler.census_qualified_id)
+          end
 
           def attributes
             handler.attributes.except(:user, :handler_name)
           end
-
-          private
 
           attr_reader :authorization, :handler
         end

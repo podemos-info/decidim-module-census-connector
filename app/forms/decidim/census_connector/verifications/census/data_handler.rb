@@ -12,11 +12,11 @@ module Decidim
           end
 
           def self.document_types
-            ::Census::API::Person.document_types
+            Person.document_types
           end
 
           def self.genders
-            ::Census::API::Person.genders
+            Person.genders
           end
 
           attribute :first_name, String
@@ -76,7 +76,7 @@ module Decidim
           end
 
           def local_document?
-            ::Census::API::Person.local_document? document_type
+            Person.local_document? document_type
           end
 
           def verified?
