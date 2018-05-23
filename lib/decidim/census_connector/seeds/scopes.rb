@@ -25,6 +25,7 @@ module Decidim
             load_cached_scopes(cache_path)
           else
             load_original_scopes("#{base_path}/scopes.tsv", "#{base_path}/scopes.translations.tsv")
+            cache_scopes(cache_path)
           end
         end
 
