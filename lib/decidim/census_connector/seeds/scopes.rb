@@ -43,8 +43,12 @@ module Decidim
 
         def save_scopes(main_source, translations_source)
           puts "Loading scopes..."
-          return if use_cached_scopes
+          return if load_cached_scopes
 
+          load_original_scopes
+        end
+
+        def load_original_scopes
           @translations = Hash.new { |h, k| h[k] = {} }
           CSV.foreach(translations_source, col_sep: "\t", headers: true) do |row|
             @translations[row["UID"]][row["Locale"]] = row["Translation"]
@@ -56,7 +60,7 @@ module Decidim
           end
         end
 
-        def use_cached_scopes
+        def load_cached_scopes
           return unless File.exist?(CACHE_PATH)
 
           conn = ActiveRecord::Base.connection.raw_connection
