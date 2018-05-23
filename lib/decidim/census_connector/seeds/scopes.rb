@@ -9,27 +9,11 @@ module Decidim
         EXTERIOR_SCOPE = "XX"
         CACHE_PATH = Rails.root.join("tmp", "cache", "#{Rails.env}_scopes.csv").freeze
 
-        class << self
-          def instance
-            @instance ||= Scopes.new
-          end
-
-          def seed(organization, options = {})
-            instance.seed organization, options
-          end
-
-          def cache_scopes
-            conn = ActiveRecord::Base.connection.raw_connection
-            File.open(CACHE_PATH, "w:ASCII-8BIT") do |file|
-              conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
-                while (row = conn.get_copy_data) do file.puts row end
-              end
-            end
-          end
+        def initialize(organization)
+          @organization = organization
         end
 
-        def seed(organization, options = {})
-          @organization = organization
+        def seed(options = {})
           base_path = options[:base_path] || File.expand_path(File.join("..", "..", "..", "..", "db", "seeds"), __dir__)
           @path = File.join(base_path, "scopes")
 
@@ -83,6 +67,15 @@ module Decidim
             end
           end
           true
+        end
+
+        def cache_scopes
+          conn = ActiveRecord::Base.connection.raw_connection
+          File.open(CACHE_PATH, "w:ASCII-8BIT") do |file|
+            conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
+              while (row = conn.get_copy_data) do file.puts row end
+            end
+          end
         end
 
         def root_code(code)
