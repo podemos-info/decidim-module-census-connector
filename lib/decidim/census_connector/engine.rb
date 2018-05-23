@@ -26,22 +26,11 @@ module Decidim
       end
 
       def load_seed
+        Decidim::Scope.delete_all
+        Decidim::ScopeType.delete_all
+
         Decidim::Organization.find_each do |organization|
-          break if Decidim::Scope.find_by(code: "ES", organization: organization)
-
-          country = Decidim::ScopeType.create_with(
-            plural: Decidim::Faker::Localized.literal("countries")
-          ).find_or_initialize_by(
-            name: Decidim::Faker::Localized.literal("country"),
-            organization: organization
-          )
-
-          Decidim::Scope.create!(
-            code: "ES",
-            organization: organization,
-            name: Decidim::Faker::Localized.literal(::Faker::Address.unique.state),
-            scope_type: country
-          )
+          Decidim::CensusConnector::Seeds::Scopes.new(organization).seed
         end
       end
     end
