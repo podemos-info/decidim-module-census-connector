@@ -17,16 +17,16 @@ module Decidim
           base_path = options[:base_path] || File.expand_path(File.join("..", "..", "..", "..", "db", "seeds"), __dir__)
           @path = File.join(base_path, "scopes")
 
-          save_scope_types
-          save_scopes
+          save_scope_types(File.join(@path, "scope_types.tsv"))
+          save_scopes(File.join(@path, "scopes.tsv"), File.join(@path, "scopes.translations.tsv"))
         end
 
         private
 
-        def save_scope_types
+        def save_scope_types(source)
           puts "Loading scope types..."
           @scope_types = Hash.new { |h, k| h[k] = Hash.new { |h2, k2| h2[k2] = {} } }
-          CSV.foreach(File.join(@path, "scope_types.tsv"), col_sep: "\t", headers: true) do |row|
+          CSV.foreach(source, col_sep: "\t", headers: true) do |row|
             @scope_types[row["Code"]][:id] = row["UID"]
             @scope_types[row["Code"]][:organization] = @organization
             @scope_types[row["Code"]][:name][row["Locale"]] = row["Singular"]
@@ -42,17 +42,17 @@ module Decidim
           end
         end
 
-        def save_scopes
+        def save_scopes(main_source, translations_source)
           puts "Loading scopes..."
           return if use_cached_scopes
 
           @translations = Hash.new { |h, k| h[k] = {} }
-          CSV.foreach(File.join(@path, "scopes.translations.tsv"), col_sep: "\t", headers: true) do |row|
+          CSV.foreach(translations_source, col_sep: "\t", headers: true) do |row|
             @translations[row["UID"]][row["Locale"]] = row["Translation"]
           end
 
           @scope_ids = {}
-          CSV.foreach(File.join(@path, "scopes.tsv"), col_sep: "\t", headers: true) do |row|
+          CSV.foreach(main_source, col_sep: "\t", headers: true) do |row|
             save_scope row
           end
         end
