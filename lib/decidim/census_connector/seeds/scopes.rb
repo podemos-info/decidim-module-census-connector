@@ -9,40 +9,31 @@ module Decidim
         EXTERIOR_SCOPE = "XX"
         CACHE_PATH = Rails.root.join("tmp", "cache", "#{Rails.env}_scopes.csv").freeze
 
-        class << self
-          def instance
-            @instance ||= Scopes.new
-          end
-
-          def seed(organization, options = {})
-            instance.seed organization, options
-          end
-
-          def cache_scopes
-            conn = ActiveRecord::Base.connection.raw_connection
-            File.open(CACHE_PATH, "w:ASCII-8BIT") do |file|
-              conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
-                while (row = conn.get_copy_data) do file.puts row end
-              end
-            end
-          end
+        def initialize(organization)
+          @organization = organization
         end
 
-        def seed(organization, options = {})
-          @organization = organization
-          base_path = options[:base_path] || File.expand_path(File.join("..", "..", "..", "..", "db", "seeds"), __dir__)
-          @path = File.join(base_path, "scopes")
+        def seed(options = {})
+          base_path = options[:base_path] || File.expand_path("../../../../db/seeds/scopes", __dir__)
+          cache_path = ENV["SCOPES_CACHE_PATH"].presence || CACHE_PATH
 
-          save_scope_types
-          save_scopes
+          puts "Loading scope types..."
+          save_scope_types("#{base_path}/scope_types.tsv")
+
+          puts "Loading scopes..."
+          if File.exist?(cache_path)
+            load_cached_scopes(cache_path)
+          else
+            load_original_scopes("#{base_path}/scopes.tsv", "#{base_path}/scopes.translations.tsv")
+            cache_scopes(cache_path)
+          end
         end
 
         private
 
-        def save_scope_types
-          puts "Loading scope types..."
+        def save_scope_types(source)
           @scope_types = Hash.new { |h, k| h[k] = Hash.new { |h2, k2| h2[k2] = {} } }
-          CSV.foreach(File.join(@path, "scope_types.tsv"), col_sep: "\t", headers: true) do |row|
+          CSV.foreach(source, col_sep: "\t", headers: true) do |row|
             @scope_types[row["Code"]][:id] = row["UID"]
             @scope_types[row["Code"]][:organization] = @organization
             @scope_types[row["Code"]][:name][row["Locale"]] = row["Singular"]
@@ -58,31 +49,34 @@ module Decidim
           end
         end
 
-        def save_scopes
-          puts "Loading scopes..."
-          return if use_cached_scopes
-
+        def load_original_scopes(main_source, translations_source)
           @translations = Hash.new { |h, k| h[k] = {} }
-          CSV.foreach(File.join(@path, "scopes.translations.tsv"), col_sep: "\t", headers: true) do |row|
+          CSV.foreach(translations_source, col_sep: "\t", headers: true) do |row|
             @translations[row["UID"]][row["Locale"]] = row["Translation"]
           end
 
           @scope_ids = {}
-          CSV.foreach(File.join(@path, "scopes.tsv"), col_sep: "\t", headers: true) do |row|
+          CSV.foreach(main_source, col_sep: "\t", headers: true) do |row|
             save_scope row
           end
         end
 
-        def use_cached_scopes
-          return unless File.exist?(CACHE_PATH)
-
+        def load_cached_scopes(source)
           conn = ActiveRecord::Base.connection.raw_connection
-          File.open(CACHE_PATH, "r:ASCII-8BIT") do |file|
+          File.open(source, "r:ASCII-8BIT") do |file|
             conn.copy_data "COPY decidim_scopes FROM STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
               conn.put_copy_data(file.readline) until file.eof?
             end
           end
-          true
+        end
+
+        def cache_scopes(target)
+          conn = ActiveRecord::Base.connection.raw_connection
+          File.open(target, "w:ASCII-8BIT") do |file|
+            conn.copy_data "COPY (SELECT * FROM decidim_scopes) To STDOUT With CSV HEADER DELIMITER E'\t' NULL '' ENCODING 'UTF8'" do
+              while (row = conn.get_copy_data) do file.puts row end
+            end
+          end
         end
 
         def root_code(code)
