@@ -78,7 +78,7 @@ module Decidim
           end
 
           def local_document?
-            Person.local_document? document_type
+            Person.local_document?(document_type)
           end
 
           def verified?
