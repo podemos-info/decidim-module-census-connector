@@ -6,7 +6,7 @@ ruby RUBY_VERSION
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
-gem "decidim", "~> 0.11", github: "decidim/decidim", branch: "0.11-stable"
+gem "decidim", "~> 0.11", github: "decidim/decidim", branch: "fix/date_picker_errors"
 gem "decidim-census_connector", path: "."
 
 gem "puma", "~> 3.0"
@@ -15,7 +15,7 @@ gem "uglifier", "~> 4.1"
 group :development, :test do
   gem "byebug", "~> 10.0", platform: :mri
 
-  gem "decidim-dev", "~> 0.11", github: "decidim/decidim", branch: "0.11-stable"
+  gem "decidim-dev", "~> 0.11", github: "decidim/decidim", branch: "fix/date_picker_errors"
   gem "xxhash"
 end
 
