@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3b1750ce6421ea3375ad5a13d1b9075b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=180f5ccd-1a39-4c25-8bec-58927ff6e469; path=/; expires=Sat, 26 May
+        2018 01:57:48 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=3a5d1921-f5ca-4acd-ba6a-ae6377899726; path=/; expires=Mon, 25
+        May 2020 21:57:48 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 2acf3a9c-6f79-4e65-a79d-35bca1a28338
+      X-Runtime:
+      - '0.008243'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"first_name":"Marlin","last_name1":"D''Amore","last_name2":"","document_type":"dni","document_id":"83528307N","born_at":"2000-05-25","gender":"female","address":"Rua
+        del Percebe, 1","postal_code":"08001","email":"user6@example.org","phone":"0034644319180","membership_level":"follower","scope_code":"ES","address_scope_code":"ES","document_scope_code":"ES","state":"enabled","verification":"verified","external_ids":{"decidim":1}}'
+    http_version: 
+  recorded_at: Fri, 25 May 2018 21:57:48 GMT
+- request:
+    method: patch
+    uri: http://mycensus:3001/api/v1/people/1@census
+    body:
+      encoding: UTF-8
+      string: first_name=Marlin&last_name1=D%27Amore&last_name2=&document_type=dni&document_id=&born_at=2000-05-25%2021%3A57%3A48%20UTC&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=08001&email=user21%40example.org&document_scope_code=ES&scope_code=ES&address_scope_code=ES
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=c7a9b47d-977b-40b0-a76a-fe93d477c9af; path=/; expires=Sat, 26 May
+        2018 01:57:48 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=7187908e-e5f7-45d2-87a4-eb983acff476; path=/; expires=Mon, 25
+        May 2020 21:57:48 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - b83154c6-1663-46f5-bf01-5f36ebff5c63
+      X-Runtime:
+      - '0.012874'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"document_id":["no puede estar en blanco"]}'
+    http_version: 
+  recorded_at: Fri, 25 May 2018 21:57:48 GMT
+recorded_with: VCR 4.0.0

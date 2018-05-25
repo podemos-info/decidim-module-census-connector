@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mycensus:3001/api/v1/people/1@census
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"06a0957d3ba08033c315ddab9f82c451"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - ahoy_visit=4f1da9e0-d9e6-4ef7-9669-2e34012e3fb8; path=/; expires=Fri, 25 May
+        2018 20:55:56 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=8e1c2d9d-a5ab-4d26-bfc3-848ac953a596; path=/; expires=Mon, 25
+        May 2020 16:55:56 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - f47ef761-0cd9-4928-90ae-fd1507c6c989
+      X-Runtime:
+      - '0.029114'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6MSwiZmlyc3RfbmFtZSI6IkJlcnRhIiwibGFzdF9uYW1lMSI6Ikhlcm7DoWRleiIsImxhc3RfbmFtZTIiOiJIZXJyZXJhIiwiZG9jdW1lbnRfdHlwZSI6InBhc3Nwb3J0IiwiZG9jdW1lbnRfaWQiOiJKUzY2NzQ2MSIsImJvcm5fYXQiOiIxOTk3LTA4LTMxIiwiZ2VuZGVyIjoidW5kaXNjbG9zZWQiLCJhZGRyZXNzIjoiQ29sb25pYSBQZWRybyA5IiwicG9zdGFsX2NvZGUiOiIzMjQ1MiIsImVtYWlsIjoiamFrZUB0b3JwLmJpeiIsInBob25lIjoiMDAzNDY0NDMxOTE4MCIsIm1lbWJlcnNoaXBfbGV2ZWwiOiJmb2xsb3dlciIsInNjb3BlX2NvZGUiOiJFUy1DTC1MRS0xODciLCJhZGRyZXNzX3Njb3BlX2NvZGUiOiJFUy1DTC1MRS0xODciLCJkb2N1bWVudF9zY29wZV9jb2RlIjoiRVMiLCJzdGF0ZSI6ImVuYWJsZWQiLCJ2ZXJpZmljYXRpb24iOiJ2ZXJpZmllZCIsImV4dGVybmFsX2lkcyI6eyJkZWNpZGltIjoxfX0=
+    http_version: 
+  recorded_at: Fri, 25 May 2018 16:55:56 GMT
+- request:
+    method: patch
+    uri: http://mycensus:3001/api/v1/people/1@census
+    body:
+      encoding: UTF-8
+      string: first_name=Marlin&last_name1=D%27Amore&last_name2=&document_type=dni&document_id=83528307N&born_at=2000-05-25%2016%3A55%3A56%20UTC&gender=female&address=Rua%20del%20Percebe%2C%201&postal_code=%23%25%24&email=user5%40example.org&document_scope_code=ES&scope_code=ES&address_scope_code=ES
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - ahoy_visit=b3262ba6-6c06-4929-a8f5-064f9d537126; path=/; expires=Fri, 25 May
+        2018 20:55:56 -0000; HttpOnly; SameSite=Lax
+      - ahoy_visitor=42a50567-beb4-4983-bce7-af1b8002d901; path=/; expires=Mon, 25
+        May 2020 16:55:56 -0000; HttpOnly; SameSite=Lax
+      X-Request-Id:
+      - 14c0bbc0-6bbb-43b5-a0ad-1cc02f098c4f
+      X-Runtime:
+      - '0.153514'
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - origin-when-cross-origin
+      Clear-Site-Data:
+      - '"storage", "executionContexts"'
+      Content-Security-Policy:
+      - 'default-src https: ''self''; script-src ''self'' ''unsafe-inline''; style-src
+        ''self'' ''unsafe-inline''; report-uri /csp-report'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Fri, 25 May 2018 16:55:56 GMT
+recorded_with: VCR 4.0.0
