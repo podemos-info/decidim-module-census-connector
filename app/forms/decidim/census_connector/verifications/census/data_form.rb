@@ -69,7 +69,7 @@ module Decidim
 
           def scope
             @scope ||= begin
-              if local_scope.ancestor_of?(address_scope)
+              if local_address?
                 address_scope
               else
                 Decidim::Scope.find_by(id: scope_id)
@@ -79,6 +79,10 @@ module Decidim
 
           def local_document?
             Person.local_document?(document_type)
+          end
+
+          def local_address?
+            local_scope.ancestor_of?(address_scope)
           end
 
           def verified?
