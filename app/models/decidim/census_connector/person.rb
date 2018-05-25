@@ -14,6 +14,10 @@ module Decidim
       delegate :id, to: :address_scope, prefix: true
       delegate :id, to: :document_scope, prefix: true
 
+      def self.document_scopes
+        @document_scopes ||= Decidim::Scope.top_level.order(name: :asc)
+      end
+
       def initialize(person_data)
         @person_data = OpenStruct.new(person_data)
       end

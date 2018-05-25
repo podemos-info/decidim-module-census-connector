@@ -9,10 +9,6 @@ module Decidim
           delegate :person, to: :person_proxy
           delegate :email, to: :user
 
-          def self.document_scopes
-            @document_scopes ||= Decidim::Scope.top_level.order(name: :asc)
-          end
-
           attribute :first_name, String
           attribute :last_name1, String
           attribute :last_name2, String
